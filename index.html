@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Burns for President 2024 | Excellent.</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Lato:wght@300;400;700&display=swap');
+
+        :root {
+            --burns-green: #006644;
+            --burns-gold: #D4AF37;
+            --burns-dark: #1a1a1a;
+            --burns-light: #f4f4f4;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            background-color: var(--burns-light);
+            color: var(--burns-dark);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .text-gold { color: var(--burns-gold); }
+        .bg-gold { background-color: var(--burns-gold); }
+        .text-green { color: var(--burns-green); }
+        .bg-green { background-color: var(--burns-green); }
+
+        .btn-primary {
+            background-color: var(--burns-gold);
+            color: var(--burns-dark);
+            padding: 1rem 2rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            border: 2px solid var(--burns-gold);
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            background-color: transparent;
+            color: var(--burns-gold);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: white;
+            padding: 1rem 2rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: 2px solid white;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .btn-secondary:hover {
+            background-color: white;
+            color: var(--burns-dark);
+        }
+
+        .hero-bg {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://image.pollinations.ai/prompt/grandiose%20presidential%20stage%20with%20golden%20curtains%20and%20nuclear%20power%20plant%20silhouette%20in%20background%20dramatic%20lighting?width=1920&height=1080&nologo=true');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+
+        .floating-burns {
+            animation: float 6s ease-in-out infinite;
+            filter: drop-shadow(0 0 20px rgba(212, 175, 55, 0.5));
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .policy-card {
+            background: white;
+            border-top: 5px solid var(--burns-green);
+            transition: transform 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .policy-card:hover {
+            transform: translateY(-10px);
+            border-top-color: var(--burns-gold);
+        }
+
+        .marquee {
+            background-color: var(--burns-green);
+            color: white;
+            padding: 10px 0;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        .marquee-content {
+            display: inline-block;
+            animation: marquee 20s linear infinite;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        @keyframes marquee {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+
+        .section-title {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 3rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 60%;
+            height: 3px;
+            background-color: var(--burns-gold);
+            bottom: -10px;
+            left: 20%;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.8);
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 10% auto;
+            padding: 2rem;
+            border: 2px solid var(--burns-gold);
+            width: 90%;
+            max-width: 500px;
+            position: relative;
+            animation: slideDown 0.4s ease;
+        }
+
+        @keyframes slideDown {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            color: var(--burns-green);
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: var(--burns-gold);
+            box-shadow: 0 0 5px rgba(212, 175, 55, 0.5);
+        }
+
+        .donation-tier {
+            border: 1px solid #ddd;
+            padding: 1rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .donation-tier:hover, .donation-tier.selected {
+            background-color: var(--burns-green);
+            color: white;
+            border-color: var(--burns-green);
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg fixed w-full z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20">
+                <div class="flex items-center">
+                    <span class="text-3xl font-black text-green tracking-widest">BURNS<span class="text-gold">2024</span></span>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#agenda" class="text-gray-800 hover:text-green font-bold uppercase text-sm tracking-wider">The Agenda</a>
+                    <a href="#about" class="text-gray-800 hover:text-green font-bold uppercase text-sm tracking-wider">About C.M.</a>
+                    <a href="#register" class="text-gray-800 hover:text-green font-bold uppercase text-sm tracking-wider">Register</a>
+                    <button onclick="openModal('donateModal')" class="bg-green text-white px-6 py-2 rounded-full font-bold uppercase hover:bg-yellow-600 transition duration-300">Donate</button>
+                </div>
+                <div class="md:hidden flex items-center">
+                    <button class="text-gray-800 focus:outline-none">
+                        <i class="ri-menu-3-line text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero-bg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="text-white space-y-6">
+                    <h1 class="text-5xl md:text-7xl font-black leading-tight">
+                        RELEASE THE <span class="text-gold">HOUNDS</span><br>
+                        OF PROGRESS.
+                    </h1>
+                    <p class="text-xl md:text-2xl font-light opacity-90">
+                        "Excellent." <br>
+                        It's time to put the power back where it belongs: In the hands of those who own the plant.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 pt-4">
+                        <button onclick="openModal('registerModal')" class="btn-primary">Register to Vote</button>
+                        <button onclick="openModal('donateModal')" class="btn-secondary">Contribute Funds</button>
+                    </div>
+                </div>
+                <div class="flex justify-center md:justify-end">
+                    <!-- Using the user provided image URL -->
+                    <img src="https://i.imgur.com/kX3sY6l.png" alt="Mr. Burns" class="floating-burns w-full max-w-md object-contain">
+                </div>
+            </div>
+        </div>
+        <div class="absolute bottom-0 w-full h-24 bg-gradient-to-t from-gray-100 to-transparent"></div>
+    </header>
+
+    <!-- Marquee -->
+    <div class="marquee">
+        <div class="marquee-content">
+            VOTE BURNS FOR A BRIGHTER (AND MORE PROFITABLE) FUTURE +++ NO MORE UNIONS +++ NUCLEAR ENERGY IS THE ONLY ENERGY +++ SMITHERS KNOWS BEST +++ VOTE BURNS +++
+        </div>
+    </div>
+
+    <!-- The Agenda Section -->
+    <section id="agenda" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h2 class="section-title text-4xl md:text-5xl font-bold text-gray-900">The Burns Agenda</h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">Policies designed to streamline efficiency and maximize shareholder value for the American people.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8 mt-16">
+                <!-- Policy 1 -->
+                <div class="policy-card p-8 rounded-lg">
+                    <div class="w-16 h-16 bg-green/10 rounded-full flex items-center justify-center mb-6">
+                        <i class="ri-atom-line text-3xl text-green"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">The Nuclear Renaissance</h3>
+                    <p class="text-gray-600 mb-6">Why rely on "renewables" when we have the atom? I propose removing all safety regulations to lower energy costs by 400%. Glowing children are a small price to pay for cheap electricity.</p>
+                    <a href="#" class="text-green font-bold uppercase text-sm hover:underline">Read Proposal &rarr;</a>
+                </div>
+
+                <!-- Policy 2 -->
+                <div class="policy-card p-8 rounded-lg">
+                    <div class="w-16 h-16 bg-green/10 rounded-full flex items-center justify-center mb-6">
+                        <i class="ri-money-dollar-circle-line text-3xl text-green"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Abolish The Weekend</h3>
+                    <p class="text-gray-600 mb-6">Saturday and Sunday are merely opportunities for lost productivity. My administration will implement a 7-day work week to ensure America stays competitive against global markets.</p>
+                    <a href="#" class="text-green font-bold uppercase text-sm hover:underline">Read Proposal &rarr;</a>
+                </div>
+
+                <!-- Policy 3 -->
+                <div class="policy-card p-8 rounded-lg">
+                    <div class="w-16 h-16 bg-green/10 rounded-full flex items-center justify-center mb-6">
+                        <i class="ri-shield-keyhole-line text-3xl text-green"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Deregulation Now</h3>
+                    <p class="text-gray-600 mb-6">Rules are for the little people. I will dismantle the EPA, the FDA, and the Department of Education. Let the free market decide if water is safe to drink.</p>
+                    <a href="#" class="text-green font-bold uppercase text-sm hover:underline">Read Proposal &rarr;</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="order-2 md:order-1 relative">
+                    <div class="absolute -top-4 -left-4 w-full h-full border-4 border-gold z-0"></div>
+                    <img src="https://image.pollinations.ai/prompt/oil%20painting%20portrait%20of%20an%20elderly%20billionaire%20industrialist%20looking%20scheming%20and%20powerful%20dark%20moody%20lighting?width=600&height=800&nologo=true" alt="Portrait" class="relative z-10 w-full shadow-2xl grayscale hover:grayscale-0 transition duration-500">
+                </div>
+                <div class="order-1 md:order-2 space-y-6">
+                    <h2 class="text-4xl font-bold">Who Is C. Montgomery Burns?</h2>
+                    <p class="text-lg text-gray-700 leading-relaxed">
+                        Born in the late 19th century, I have seen empires rise and fall. I have survived wars, depressions, and several attempts on my life by union organizers. 
+                    </p>
+                    <p class="text-lg text-gray-700 leading-relaxed">
+                        I am not a politician. I am a <strong>job creator</strong>. While others talk about "change," I offer stability. The stability of a paycheck (however small) and the security of knowing exactly who is in charge.
+                    </p>
+                    <blockquote class="border-l-4 border-gold pl-6 italic text-xl text-gray-800 font-serif">
+                        "I am so evil, even my own shadow refuses to follow me."
+                    </blockquote>
+                    <div class="pt-4">
+                        <button class="btn-primary">Read Full Biography</button>
+                    </div>
+                </div>
+                <div class="md:order-2"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action / Registration -->
+    <section id="register" class="py-20 bg-green text-white relative overflow-hidden">
+        <!-- Decorative BG elements -->
+        <div class="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 bg-gold opacity-10 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-0 left-0 -ml-20 -mb-20 w-96 h-96 bg-black opacity-20 rounded-full blur-3xl"></div>
+
+        <div class="max-w-4xl mx-auto px-4 relative z-10 text-center">
+            <h2 class="text-4xl md:text-5xl font-bold mb-8">Secure Your Future</h2>
+            <p class="text-xl mb-12 opacity-90">Don't let the opposition steal your voice. Register today and ensure your vote counts towards a more profitable America.</p>
+            
+            <div class="bg-white text-gray-900 p-8 rounded-lg shadow-2xl max-w-lg mx-auto">
+                <h3 class="text-2xl font-bold mb-6 text-green">Voter Registration</h3>
+                <form onsubmit="event.preventDefault(); alert('Registration submitted! Smithers will be in touch.');">
+                    <input type="text" placeholder="Full Name" required class="bg-gray-100 border-none">
+                    <input type="email" placeholder="Email Address" required class="bg-gray-100 border-none">
+                    <input type="text" placeholder="Zip Code" required class="bg-gray-100 border-none">
+                    <button type="submit" class="w-full bg-gold text-black font-bold py-4 mt-4 hover:bg-yellow-500 transition uppercase tracking-widest">
+                        Register Now
+                    </button>
+                </form>
+                <p class="text-xs text-gray-500 mt-4">By registering, you agree to receive unsolicited telegrams from Mr. Burns.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black text-white py-12 border-t-4 border-gold">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <h4 class="text-2xl font-bold text-gold mb-4">BURNS 2024</h4>
+                    <p class="text-gray-400 text-sm">Paid for by Burns for President Committee. Not authorized by any candidate or candidate's committee.</p>
+                </div>
+                <div>
+                    <h5 class="font-bold uppercase tracking-wider mb-4 text-gold">Quick Links</h5>
+                    <ul class="space-y-2 text-gray-400 text-sm">
+                        <li><a href="#" class="hover:text-white">Home</a></li>
+                        <li><a href="#agenda" class="hover:text-white">The Agenda</a></li>
+                        <li><a href="#about" class="hover:text-white">About</a></li>
+                        <li><a href="#" class="hover:text-white">Press</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="font-bold uppercase tracking-wider mb-4 text-gold">Contact</h5>
+                    <ul class="space-y-2 text-gray-400 text-sm">
+                        <li>Springfield Nuclear Power Plant</li>
+                        <li>100 Industrial Way</li>
+                        <li>Springfield, USA</li>
+                        <li>office@burns2024.com</li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="font-bold uppercase tracking-wider mb-4 text-gold">Social</h5>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-gold text-2xl"><i class="ri-twitter-x-line"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-gold text-2xl"><i class="ri-facebook-circle-fill"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-gold text-2xl"><i class="ri-instagram-line"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-12 pt-8 border-t border-gray-800 text-center text-gray-600 text-sm">
+                &copy; 2024 C. Montgomery Burns. All Rights Reserved. Smithers is not liable for any damages.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Donation Modal -->
+    <div id="donateModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('donateModal')">&times;</span>
+            <h2 class="text-3xl font-bold text-center mb-2 text-green">Fund The Campaign</h2>
+            <p class="text-center text-gray-600 mb-6">Help us buy more hounds.</p>
+            
+            <div class="grid grid-cols-3 gap-2 mb-6">
+                <div class="donation-tier" onclick="selectTier(this, 50)">$50</div>
+                <div class="donation-tier selected" onclick="selectTier(this, 100)">$100</div>
+                <div class="donation-tier" onclick="selectTier(this, 500)">$500</div>
+            </div>
+
+            <form onsubmit="event.preventDefault(); alert('Thank you for your contribution! Your money is safe with me.'); closeModal('donateModal');">
+                <input type="number" id="customAmount" placeholder="Other Amount ($)" class="mb-4">
+                <input type="text" placeholder="Card Number" required>
+                <div class="grid grid-cols-2 gap-4">
+                    <input type="text" placeholder="MM/YY" required>
+                    <input type="text" placeholder="CVC" required>
+                </div>
+                <button type="submit" class="w-full bg-green text-white font-bold py-3 mt-6 hover:bg-yellow-600 transition">DONATE NOW</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Register Modal (Alternative View) -->
+    <div id="registerModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('registerModal')">&times;</span>
+            <h2 class="text-3xl font-bold text-center mb-6 text-green">Join The Movement</h2>
+            <form onsubmit="event.preventDefault(); alert('Welcome to the future!'); closeModal('registerModal');">
+                <label class="block text-gray-700 text-sm font-bold mb-2">Full Name</label>
+                <input type="text" required>
+                
+                <label class="block text-gray-700 text-sm font-bold mb-2">Email</label>
+                <input type="email" required>
+                
+                <label class="block text-gray-700 text-sm font-bold mb-2">State</label>
+                <select>
+                    <option>Select State</option>
+                    <option>Springfield</option>
+                    <option>Shelbyville</option>
+                    <option>Ogdenville</option>
+                    <option>Capital City</option>
+                </select>
+
+                <button type="submit" class="w-full bg-gold text-black font-bold py-3 mt-6 hover:bg-yellow-500 transition">REGISTER</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Modal Logic
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = "block";
+            document.body.style.overflow = "hidden"; // Prevent scrolling
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = "none";
+            document.body.style.overflow = "auto"; // Restore scrolling
+        }
+
+        // Close modal if clicking outside content
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                event.target.style.display = "none";
+                document.body.style.overflow = "auto";
+            }
+        }
+
+        // Donation Tier Selection Logic
+        function selectTier(element, amount) {
+            // Remove selected class from all tiers
+            document.querySelectorAll('.donation-tier').forEach(el => {
+                el.classList.remove('selected');
+                el.style.backgroundColor = '';
+                el.style.color = '';
+            });
+            
+            // Add selected class to clicked tier
+            element.classList.add('selected');
+            
+            // Update custom amount input
+            document.getElementById('customAmount').value = amount;
+        }
+
+        // Smooth Scroll for Anchor Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
+
