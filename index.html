@@ -3,32 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Burns for President | Restoring Greatness</title>
+    <title>Burns for President 2024 | Excellent!</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Rye&family=Playfair+Display:wght@400;700;900&family=Lato:wght@300;400;700&display=swap');
 
         :root {
-            --primary-gold: #D4AF37;
-            --primary-green: #0a2f23;
-            --glass-bg: rgba(10, 20, 15, 0.75);
-            --glass-border: rgba(212, 175, 55, 0.2);
-            --text-main: #f5f5f5;
+            --burns-yellow: #FFD90F;
+            --burns-green: #006B54;
+            --burns-gold: #D4AF37;
+            --burns-dark: #1a1a1a;
+            --burns-red: #8B0000;
         }
 
         body {
             font-family: 'Lato', sans-serif;
-            background-color: #050505;
-            color: var(--text-main);
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0a0a0a 100%);
+            color: #f5f5f5;
             overflow-x: hidden;
             min-height: 100vh;
-            display: flex;
-            flex-direction: column;
         }
 
-        /* Dynamic Background */
-        .bg-layer {
+        h1, h2, h3, h4, .western {
+            font-family: 'Rye', serif;
+        }
+
+        .serif {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Animated Background */
+        .bg-animated {
             position: fixed;
             top: 0;
             left: 0;
@@ -36,216 +42,567 @@
             height: 100%;
             z-index: -2;
             background: 
-                radial-gradient(circle at 15% 50%, rgba(20, 50, 40, 0.4), transparent 25%),
-                radial-gradient(circle at 85% 30%, rgba(212, 175, 55, 0.15), transparent 25%);
+                radial-gradient(circle at 20% 80%, rgba(0, 107, 84, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(212, 175, 55, 0.2) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(255, 217, 15, 0.1) 0%, transparent 40%);
+            animation: bgPulse 8s ease-in-out infinite;
         }
-        
-        .bg-image {
+
+        @keyframes bgPulse {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+
+        /* Nuclear Glow Effect */
+        .nuclear-glow {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -3;
-            background-image: url('https://image.pollinations.ai/prompt/dark%20moody%20abstract%20background%20with%20subtle%20architectural%20lines%20and%20golden%20light%20rays%20cinematic%20lighting?width=1920&height=1080&nologo=true');
-            background-size: cover;
-            background-position: center;
-            opacity: 0.4;
-            filter: blur(2px);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60vw;
+            height: 60vw;
+            background: radial-gradient(circle, rgba(0, 255, 100, 0.1) 0%, transparent 70%);
+            z-index: -1;
+            animation: nuclearPulse 4s ease-in-out infinite;
+            pointer-events: none;
         }
 
-        h1, h2, h3, h4, .serif {
-            font-family: 'Playfair Display', serif;
-        }
-
-        /* Glassmorphism Utilities */
-        .glass {
-            background: var(--glass-bg);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid var(--glass-border);
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
-        }
-
-        .glass-card {
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(8px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .glass-card:hover {
-            background: rgba(255, 255, 255, 0.07);
-            border-color: var(--primary-gold);
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+        @keyframes nuclearPulse {
+            0%, 100% { opacity: 0.3; transform: translate(-50%, -50%) scale(1); }
+            50% { opacity: 0.6; transform: translate(-50%, -50%) scale(1.1); }
         }
 
         /* Navigation */
         nav {
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
-        
+
         nav.scrolled {
-            background: rgba(5, 5, 5, 0.9);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--glass-border);
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 2px solid var(--burns-gold);
         }
 
         .nav-link {
             position: relative;
             color: rgba(255,255,255,0.7);
             text-transform: uppercase;
-            letter-spacing: 1px;
-            font-size: 0.85rem;
+            letter-spacing: 2px;
+            font-size: 0.8rem;
             font-weight: 700;
-            transition: color 0.3s;
+            transition: all 0.3s;
             cursor: pointer;
+            padding: 0.5rem 0;
         }
 
         .nav-link:hover, .nav-link.active {
-            color: var(--primary-gold);
+            color: var(--burns-yellow);
+            text-shadow: 0 0 10px rgba(255, 217, 15, 0.5);
         }
 
         .nav-link::after {
-            content: '';
+            content: '☢';
             position: absolute;
-            width: 0;
-            height: 1px;
-            bottom: -4px;
-            left: 0;
-            background-color: var(--primary-gold);
-            transition: width 0.3s;
+            font-size: 0.6rem;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            transition: opacity 0.3s;
+            color: var(--burns-green);
         }
 
         .nav-link:hover::after, .nav-link.active::after {
-            width: 100%;
+            opacity: 1;
         }
 
         /* Buttons */
-        .btn-gold {
-            background: linear-gradient(135deg, var(--primary-gold) 0%, #8a7020 100%);
+        .btn-burns {
+            background: linear-gradient(135deg, var(--burns-gold) 0%, #8a7020 100%);
             color: #000;
-            padding: 0.8rem 2rem;
+            padding: 1rem 2.5rem;
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            border: none;
+            letter-spacing: 2px;
+            border: 2px solid var(--burns-gold);
             cursor: pointer;
             transition: all 0.3s;
-            clip-path: polygon(10% 0, 100% 0, 100% 80%, 90% 100%, 0 100%, 0 20%);
+            position: relative;
+            overflow: hidden;
+            font-family: 'Rye', serif;
+            clip-path: polygon(5% 0, 100% 0, 100% 85%, 95% 100%, 0 100%, 0 15%);
         }
 
-        .btn-gold:hover {
+        .btn-burns::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transition: 0.6s;
+        }
+
+        .btn-burns:hover::before {
+            left: 100%;
+        }
+
+        .btn-burns:hover {
             transform: scale(1.05);
-            box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
-            filter: brightness(1.1);
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.6);
+            text-shadow: 0 0 5px rgba(0,0,0,0.5);
         }
 
         .btn-outline {
             background: transparent;
-            color: var(--primary-gold);
-            padding: 0.8rem 2rem;
+            color: var(--burns-yellow);
+            padding: 1rem 2.5rem;
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            border: 1px solid var(--primary-gold);
+            letter-spacing: 2px;
+            border: 2px solid var(--burns-yellow);
             cursor: pointer;
             transition: all 0.3s;
+            font-family: 'Rye', serif;
         }
 
         .btn-outline:hover {
-            background: rgba(212, 175, 55, 0.1);
+            background: rgba(255, 217, 15, 0.1);
+            box-shadow: 0 0 20px rgba(255, 217, 15, 0.3);
+            transform: scale(1.05);
         }
 
-        /* Page Transitions */
+        /* Page Sections */
         .page-section {
             display: none;
-            animation: fadeIn 0.6s ease-out;
-            min-height: 80vh;
-            padding-top: 100px;
-            padding-bottom: 60px;
+            animation: pageEnter 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            min-height: 100vh;
+            padding-top: 120px;
+            padding-bottom: 80px;
         }
 
         .page-section.active {
             display: block;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+        @keyframes pageEnter {
+            from { 
+                opacity: 0; 
+                transform: translateY(50px) scale(0.95);
+                filter: blur(10px);
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0) scale(1);
+                filter: blur(0);
+            }
         }
 
-        /* Forms */
-        .form-input {
-            background: rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+        /* Cards */
+        .burns-card {
+            background: linear-gradient(145deg, rgba(20, 30, 25, 0.9) 0%, rgba(10, 15, 12, 0.95) 100%);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-top: 3px solid var(--burns-gold);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .burns-card::before {
+            content: '☢';
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            font-size: 8rem;
+            opacity: 0.03;
+            color: var(--burns-green);
+            transition: all 0.4s;
+        }
+
+        .burns-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            border-color: var(--burns-gold);
+            border-top-color: var(--burns-yellow);
+            box-shadow: 0 20px 60px rgba(0, 107, 84, 0.3);
+        }
+
+        .burns-card:hover::before {
+            transform: rotate(180deg) scale(1.2);
+            opacity: 0.08;
+        }
+
+        /* Floating Burns Animation */
+        @keyframes floatBurns {
+            0%, 100% { 
+                transform: translateY(0) rotate(0deg);
+                filter: drop-shadow(0 0 20px rgba(255, 217, 15, 0.3));
+            }
+            25% { 
+                transform: translateY(-15px) rotate(1deg);
+                filter: drop-shadow(0 0 30px rgba(255, 217, 15, 0.5));
+            }
+            75% { 
+                transform: translateY(-10px) rotate(-1deg);
+                filter: drop-shadow(0 0 25px rgba(255, 217, 15, 0.4));
+            }
+        }
+
+        .floating-burns {
+            animation: floatBurns 5s ease-in-out infinite;
+        }
+
+        /* Quote Bubble */
+        .quote-bubble {
+            position: relative;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--burns-gold);
+            padding: 2rem;
+            border-radius: 20px;
+            margin: 2rem 0;
+        }
+
+        .quote-bubble::before {
+            content: '"';
+            position: absolute;
+            top: -20px;
+            left: 30px;
+            font-size: 6rem;
+            color: var(--burns-gold);
+            font-family: 'Playfair Display', serif;
+            opacity: 0.3;
+            line-height: 1;
+        }
+
+        /* Form Inputs */
+        .burns-input {
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(212, 175, 55, 0.3);
             color: white;
-            padding: 1rem;
+            padding: 1rem 1.5rem;
             width: 100%;
             transition: all 0.3s;
             font-family: 'Lato', sans-serif;
+            font-size: 1rem;
         }
 
-        .form-input:focus {
+        .burns-input:focus {
             outline: none;
-            border-color: var(--primary-gold);
-            background: rgba(0, 0, 0, 0.5);
+            border-color: var(--burns-yellow);
+            background: rgba(0, 0, 0, 0.6);
+            box-shadow: 0 0 20px rgba(255, 217, 15, 0.2);
+            transform: scale(1.02);
         }
 
-        /* Floating Animation */
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-15px); }
-            100% { transform: translateY(0px); }
+        .burns-input::placeholder {
+            color: rgba(255, 255, 255, 0.3);
         }
-        .floating { animation: float 6s ease-in-out infinite; }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(10px);
+            animation: modalFadeIn 0.3s ease;
+        }
+
+        @keyframes modalFadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            background: linear-gradient(145deg, #1a2520 0%, #0a100d 100%);
+            border: 2px solid var(--burns-gold);
+            margin: 5% auto;
+            padding: 3rem;
+            width: 90%;
+            max-width: 600px;
+            position: relative;
+            animation: modalSlideIn 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 0 100px rgba(212, 175, 55, 0.3);
+        }
+
+        @keyframes modalSlideIn {
+            from { 
+                transform: translateY(-100px) scale(0.8);
+                opacity: 0;
+            }
+            to { 
+                transform: translateY(0) scale(1);
+                opacity: 1;
+            }
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 25px;
+            font-size: 36px;
+            font-weight: 300;
+            cursor: pointer;
+            color: var(--burns-gold);
+            transition: all 0.3s;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .close-modal:hover {
+            color: var(--burns-yellow);
+            transform: rotate(90deg) scale(1.2);
+        }
+
+        /* Donation Tiers */
+        .donation-tier {
+            border: 2px solid rgba(212, 175, 55, 0.3);
+            padding: 1.5rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            background: rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .donation-tier::after {
+            content: '$';
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            font-size: 4rem;
+            opacity: 0.05;
+            color: var(--burns-gold);
+            font-family: 'Rye', serif;
+        }
+
+        .donation-tier:hover, .donation-tier.selected {
+            border-color: var(--burns-yellow);
+            background: rgba(212, 175, 55, 0.15);
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.3);
+        }
+
+        .donation-tier.selected::after {
+            opacity: 0.15;
+        }
+
+        /* Marquee */
+        .marquee-container {
+            overflow: hidden;
+            white-space: nowrap;
+            background: linear-gradient(90deg, var(--burns-green) 0%, #004d3d 50%, var(--burns-green) 100%);
+            padding: 0.8rem 0;
+            border-top: 2px solid var(--burns-gold);
+            border-bottom: 2px solid var(--burns-gold);
+        }
+
+        .marquee-content {
+            display: inline-block;
+            animation: marquee 25s linear infinite;
+            font-family: 'Rye', serif;
+            font-size: 1.1rem;
+            letter-spacing: 3px;
+            color: var(--burns-yellow);
+            text-shadow: 0 0 10px rgba(255, 217, 15, 0.5);
+        }
+
+        @keyframes marquee {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+
+        /* Hound Animation */
+        @keyframes houndRun {
+            0% { transform: translateX(-100px); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateX(100vw); opacity: 0; }
+        }
+
+        .hound-trigger {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        .hound {
+            position: absolute;
+            bottom: 20px;
+            font-size: 3rem;
+            animation: houndRun 3s linear infinite;
+            filter: drop-shadow(0 0 10px rgba(255, 0, 0, 0.5));
+        }
+
+        /* Scroll Progress */
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--burns-green), var(--burns-gold), var(--burns-yellow));
+            z-index: 10000;
+            width: 0%;
+            transition: width 0.1s;
+        }
 
         /* Custom Scrollbar */
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #0a0a0a; }
-        ::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: var(--primary-gold); }
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #0a0a0a;
+            border-left: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--burns-gold);
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--burns-yellow);
+        }
+
+        /* Smithers Badge */
+        .smithers-badge {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 70px;
+            height: 70px;
+            background: radial-gradient(circle, var(--burns-gold) 0%, #8a7020 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 999;
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.5);
+            transition: all 0.3s;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .smithers-badge:hover {
+            transform: scale(1.1) rotate(10deg);
+            box-shadow: 0 0 50px rgba(212, 175, 55, 0.8);
+        }
+
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 0 30px rgba(212, 175, 55, 0.5); }
+            50% { box-shadow: 0 0 50px rgba(212, 175, 55, 0.8); }
+        }
+
+        /* Loading Screen */
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #0a0a0a;
+            z-index: 99999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            transition: opacity 0.5s ease;
+        }
+
+        .loading-text {
+            font-family: 'Rye', serif;
+            font-size: 2rem;
+            color: var(--burns-gold);
+            margin-top: 2rem;
+            animation: loadingPulse 1.5s ease-in-out infinite;
+        }
+
+        @keyframes loadingPulse {
+            0%, 100% { opacity: 0.5; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.05); }
+        }
+
+        .loading-spinner {
+            width: 80px;
+            height: 80px;
+            border: 4px solid rgba(212, 175, 55, 0.2);
+            border-top-color: var(--burns-gold);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
 
     </style>
 </head>
 <body>
 
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loading-spinner"></div>
+        <div class="loading-text">SMITHERS, PREPARE THE CAMPAIGN...</div>
+    </div>
+
+    <!-- Scroll Progress -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+
     <!-- Background Elements -->
-    <div class="bg-image"></div>
-    <div class="bg-layer"></div>
+    <div class="bg-animated"></div>
+    <div class="nuclear-glow"></div>
+
+    <!-- Hound Trigger (Hidden Easter Egg) -->
+    <div class="hound-trigger" id="houndTrigger"></div>
+
+    <!-- Smithers Badge -->
+    <div class="smithers-badge" onclick="smithersHelp()" title="Need Help?">
+        <i class="ri-customer-service-2-line text-3xl text-black"></i>
+    </div>
 
     <!-- Navigation -->
     <nav class="fixed w-full z-50 py-6" id="navbar">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center">
                 <div class="flex items-center space-x-3 cursor-pointer" onclick="navigateTo('home')">
-                    <div class="w-10 h-10 bg-gold rounded-sm flex items-center justify-center text-black font-serif font-bold text-xl">B</div>
-                    <span class="text-2xl font-serif font-bold text-white tracking-widest">BURNS<span class="text-gold">2024</span></span>
+                    <div class="w-12 h-12 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-full flex items-center justify-center text-black font-western font-bold text-2xl border-2 border-gold shadow-lg shadow-yellow-500/30">B</div>
+                    <div>
+                        <span class="text-2xl western font-bold text-white tracking-widest block">BURNS</span>
+                        <span class="text-xs text-gold tracking-[0.4em] block -mt-1">FOR PRESIDENT 2024</span>
+                    </div>
                 </div>
                 
-                <div class="hidden md:flex space-x-8">
+                <div class="hidden md:flex space-x-10">
                     <button onclick="navigateTo('home')" class="nav-link active" id="link-home">Home</button>
                     <button onclick="navigateTo('agenda')" class="nav-link" id="link-agenda">Agenda</button>
                     <button onclick="navigateTo('about')" class="nav-link" id="link-about">About</button>
                     <button onclick="navigateTo('involved')" class="nav-link" id="link-involved">Get Involved</button>
                 </div>
 
-                <button onclick="navigateTo('involved')" class="btn-gold hidden md:block">Donate Now</button>
+                <button onclick="openModal('donateModal')" class="btn-burns hidden md:block">Donate ☢</button>
                 
                 <!-- Mobile Menu Button -->
-                <button class="md:hidden text-white" onclick="toggleMobileMenu()">
-                    <i class="ri-menu-line text-2xl"></i>
+                <button class="md:hidden text-gold" onclick="toggleMobileMenu()">
+                    <i class="ri-menu-4-line text-3xl"></i>
                 </button>
             </div>
         </div>
         <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden glass mt-4 mx-4 rounded-lg p-4 absolute top-20 left-4 right-4">
+        <div id="mobile-menu" class="hidden md:hidden glass mt-4 mx-4 rounded-lg p-4 absolute top-20 left-4 right-4 border border-gold">
             <div class="flex flex-col space-y-4">
-                <button onclick="navigateTo('home'); toggleMobileMenu()" class="text-left text-white hover:text-gold">Home</button>
-                <button onclick="navigateTo('agenda'); toggleMobileMenu()" class="text-left text-white hover:text-gold">Agenda</button>
-                <button onclick="navigateTo('about'); toggleMobileMenu()" class="text-left text-white hover:text-gold">About</button>
-                <button onclick="navigateTo('involved'); toggleMobileMenu()" class="text-left text-white hover:text-gold">Get Involved</button>
+                <button onclick="navigateTo('home'); toggleMobileMenu()" class="text-left text-white hover:text-yellow-400 py-2 border-b border-white/10">Home</button>
+                <button onclick="navigateTo('agenda'); toggleMobileMenu()" class="text-left text-white hover:text-yellow-400 py-2 border-b border-white/10">Agenda</button>
+                <button onclick="navigateTo('about'); toggleMobileMenu()" class="text-left text-white hover:text-yellow-400 py-2 border-b border-white/10">About</button>
+                <button onclick="navigateTo('involved'); toggleMobileMenu()" class="text-left text-white hover:text-yellow-400 py-2">Get Involved</button>
             </div>
         </div>
     </nav>
@@ -255,46 +612,58 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center">
             <div class="grid md:grid-cols-2 gap-12 items-center w-full">
                 <div class="space-y-8 order-2 md:order-1">
-                    <div class="inline-block px-4 py-1 border border-gold/50 rounded-full bg-gold/10">
-                        <span class="text-gold text-xs font-bold uppercase tracking-widest">The Campaign for Prosperity</span>
+                    <div class="inline-block px-6 py-2 border-2 border-gold rounded-full bg-gold/10 animate-pulse">
+                        <span class="text-gold text-sm font-bold tracking-[0.3em]">☢ MAKE AMERICA GLOW AGAIN ☢</span>
                     </div>
-                    <h1 class="text-5xl md:text-7xl font-bold leading-tight">
-                        A Future Built on <span class="text-transparent bg-clip-text bg-gradient-to-r from-gold to-yellow-200">Excellence</span>
+                    <h1 class="text-5xl md:text-7xl lg:text-8xl western font-bold leading-tight text-white drop-shadow-2xl">
+                        EXCELLENT.<br>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-gold to-yellow-600" style="text-shadow: 0 0 30px rgba(255, 217, 15, 0.5);">ABSOLUTELY</span><br>
+                        EXCELLENT.
                     </h1>
-                    <p class="text-lg text-gray-300 font-light leading-relaxed max-w-lg">
-                        It is time to return power to those who understand it. Join C. Montgomery Burns in restoring dignity, profitability, and order to the United States of America.
+                    <p class="text-xl text-gray-300 font-light leading-relaxed max-w-lg serif italic">
+                        "Smithers, I'm going to run for President. I want power... more power than I've ever had before!"
                     </p>
-                    <div class="flex flex-col sm:flex-row gap-4">
-                        <button onclick="navigateTo('involved')" class="btn-gold">Join the Movement</button>
-                        <button onclick="navigateTo('agenda')" class="btn-outline">View Policies</button>
+                    <div class="flex flex-col sm:flex-row gap-6">
+                        <button onclick="openModal('registerModal')" class="btn-burns">Register to Vote</button>
+                        <button onclick="navigateTo('agenda')" class="btn-outline">View My Plans</button>
                     </div>
                     
-                    <div class="pt-8 flex items-center space-x-4 text-sm text-gray-400">
-                        <div class="flex -space-x-2">
-                            <div class="w-8 h-8 rounded-full bg-gray-700 border border-black"></div>
-                            <div class="w-8 h-8 rounded-full bg-gray-600 border border-black"></div>
-                            <div class="w-8 h-8 rounded-full bg-gray-500 border border-black"></div>
+                    <div class="pt-8 border-t border-white/10">
+                        <div class="flex items-center space-x-4 text-sm text-gray-400">
+                            <div class="flex -space-x-3">
+                                <div class="w-10 h-10 rounded-full bg-gradient-to-br from-yellow-400 to-yellow-600 border-2 border-black flex items-center justify-center text-xs font-bold">☢</div>
+                                <div class="w-10 h-10 rounded-full bg-gradient-to-br from-green-600 to-green-800 border-2 border-black flex items-center justify-center text-xs font-bold">$</div>
+                                <div class="w-10 h-10 rounded-full bg-gradient-to-br from-gray-600 to-gray-800 border-2 border-black flex items-center justify-center text-xs font-bold">⚡</div>
+                            </div>
+                            <div>
+                                <p class="text-white font-bold">10,420</p>
+                                <p>Patriots Joined Today</p>
+                            </div>
                         </div>
-                        <p>Joined by 10,000+ patriots today</p>
                     </div>
                 </div>
                 <div class="order-1 md:order-2 flex justify-center relative">
-                    <div class="absolute inset-0 bg-gold blur-[120px] opacity-20 rounded-full"></div>
+                    <div class="absolute inset-0 bg-gradient-to-r from-green-900/40 to-yellow-900/40 blur-[150px] rounded-full animate-pulse"></div>
                     <!-- Using the user provided image URL -->
-                    <img src="https://i.imgur.com/kX3sY6l.png" alt="Mr. Burns" class="floating w-full max-w-md object-contain relative z-10 drop-shadow-2xl">
+                    <img src="https://i.imgur.com/kX3sY6l.png" alt="Mr. Burns" class="floating-burns w-full max-w-md object-contain relative z-10" style="filter: drop-shadow(0 0 40px rgba(255, 217, 15, 0.4));">
                 </div>
             </div>
         </div>
 
-        <!-- Latest News Ticker -->
-        <div class="w-full bg-black/50 border-y border-white/5 py-3 mt-20 backdrop-blur-sm">
-            <div class="max-w-7xl mx-auto px-4 overflow-hidden">
-                <div class="whitespace-nowrap animate-marquee flex space-x-8 text-sm font-medium text-gray-400">
-                    <span class="flex items-center"><i class="ri-radio-line text-gold mr-2"></i> BURNS LEADS IN NEW POLLING DATA</span>
-                    <span class="flex items-center"><i class="ri-radio-line text-gold mr-2"></i> "EXCELLENT" SAYS BURNS ON NEW TAX PROPOSAL</span>
-                    <span class="flex items-center"><i class="ri-radio-line text-gold mr-2"></i> SMITHERS ANNOUNCES NATIONWIDE TOUR</span>
-                    <span class="flex items-center"><i class="ri-radio-line text-gold mr-2"></i> VOTE BURNS FOR A BRIGHTER TOMORROW</span>
-                </div>
+        <!-- Marquee -->
+        <div class="marquee-container mt-20">
+            <div class="marquee-content">
+                ☢ VOTE BURNS FOR A BRIGHTER FUTURE ☢ RELEASE THE HOUNDS OF PROGRESS ☢ NUCLEAR ENERGY IS PATRIOTIC ☢ SMITHERS ENDORSES THIS MESSAGE ☢ EXCELLENT EXCELLENT EXCELLENT ☢ MAKE AMERICA GLOW AGAIN ☢ NO MORE UNIONS ☢ 7-DAY WORK WEEK ☢
+            </div>
+        </div>
+
+        <!-- Featured Quote -->
+        <div class="max-w-4xl mx-auto px-4 mt-20">
+            <div class="quote-bubble text-center">
+                <p class="text-2xl md:text-3xl serif italic text-gray-200">
+                    "I say we vote for Burns! He's rich, he's powerful, and he owns the building!"
+                </p>
+                <p class="text-gold mt-4 font-bold tracking-widest uppercase">— Waylon Smithers, Jr.</p>
             </div>
         </div>
     </section>
@@ -302,68 +671,125 @@
     <!-- PAGE: AGENDA -->
     <section id="agenda" class="page-section">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl md:text-5xl font-bold mb-4">The Burns Agenda</h2>
-                <div class="w-24 h-1 bg-gold mx-auto mb-6"></div>
-                <p class="text-gray-400 max-w-2xl mx-auto">Concrete plans to secure our nation's economic dominance and energy independence.</p>
+            <div class="text-center mb-20">
+                <h2 class="text-5xl md:text-6xl western font-bold mb-6 text-white" style="text-shadow: 0 0 30px rgba(212, 175, 55, 0.5);">The Burns Agenda</h2>
+                <div class="w-32 h-1 bg-gradient-to-r from-transparent via-gold to-transparent mx-auto mb-6"></div>
+                <p class="text-xl text-gray-400 max-w-2xl mx-auto serif italic">"Smithers, prepare my policy proposals. I want them... profitable."</p>
             </div>
 
             <div class="grid md:grid-cols-3 gap-8">
                 <!-- Card 1 -->
-                <div class="glass-card p-8 rounded-xl relative overflow-hidden group">
-                    <div class="absolute top-0 right-0 p-6 opacity-5 group-hover:opacity-10 transition duration-500">
-                        <i class="ri-atom-line text-9xl text-gold"></i>
+                <div class="burns-card p-10 rounded-2xl">
+                    <div class="w-16 h-16 bg-gradient-to-br from-green-600 to-green-800 rounded-full flex items-center justify-center mb-8 border-2 border-gold shadow-lg shadow-green-500/30">
+                        <i class="ri-atom-line text-3xl text-gold"></i>
                     </div>
-                    <div class="w-14 h-14 bg-gold/10 rounded-full flex items-center justify-center mb-6 border border-gold/30">
-                        <i class="ri-atom-line text-2xl text-gold"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-4 text-white">Energy Independence</h3>
-                    <p class="text-gray-400 mb-6 font-light leading-relaxed">
-                        We will unleash the full potential of nuclear energy. By streamlining regulations, we can provide cheap, abundant power to every American home and factory.
+                    <h3 class="text-2xl western font-bold mb-4 text-gold">Nuclear Renaissance</h3>
+                    <p class="text-gray-300 mb-6 font-light leading-relaxed">
+                        Why rely on "renewables" when we have the atom? I propose removing all safety regulations to lower energy costs by 400%. A little glow never hurt anyone!
                     </p>
-                    <ul class="space-y-2 text-sm text-gray-300">
-                        <li class="flex items-center"><i class="ri-check-line text-gold mr-2"></i> Deregulate Plant Safety</li>
-                        <li class="flex items-center"><i class="ri-check-line text-gold mr-2"></i> Subsidize Uranium Mining</li>
-                        <li class="flex items-center"><i class="ri-check-line text-gold mr-2"></i> Eliminate Green Energy Mandates</li>
+                    <ul class="space-y-3 text-sm text-gray-400">
+                        <li class="flex items-center"><i class="ri-checkbox-circle-fill text-gold mr-3"></i> Deregulate All Nuclear Plants</li>
+                        <li class="flex items-center"><i class="ri-checkbox-circle-fill text-gold mr-3"></i> Tax Credits for Glowing Children</li>
+                        <li class="flex items-center"><i class="ri-checkbox-circle-fill text-gold mr-3"></i> Free Uranium for All Citizens</li>
                     </ul>
+                    <button class="mt-8 text-gold font-bold uppercase text-xs tracking-widest hover:text-yellow-400 transition duration-300 flex items-center gap-2 group">
+                        Read Full Proposal <i class="ri-arrow-right-line group-hover:translate-x-2 transition"></i>
+                    </button>
                 </div>
 
                 <!-- Card 2 -->
-                <div class="glass-card p-8 rounded-xl relative overflow-hidden group">
-                    <div class="absolute top-0 right-0 p-6 opacity-5 group-hover:opacity-10 transition duration-500">
-                        <i class="ri-money-dollar-circle-line text-9xl text-gold"></i>
+                <div class="burns-card p-10 rounded-2xl">
+                    <div class="w-16 h-16 bg-gradient-to-br from-green-600 to-green-800 rounded-full flex items-center justify-center mb-8 border-2 border-gold shadow-lg shadow-green-500/30">
+                        <i class="ri-time-line text-3xl text-gold"></i>
                     </div>
-                    <div class="w-14 h-14 bg-gold/10 rounded-full flex items-center justify-center mb-6 border border-gold/30">
-                        <i class="ri-money-dollar-circle-line text-2xl text-gold"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-4 text-white">Economic Freedom</h3>
-                    <p class="text-gray-400 mb-6 font-light leading-relaxed">
-                        Taxes are a burden on job creators. My administration will slash corporate taxes to stimulate growth and encourage hiring.
+                    <h3 class="text-2xl western font-bold mb-4 text-gold">The 7-Day Work Week</h3>
+                    <p class="text-gray-300 mb-6 font-light leading-relaxed">
+                        Saturday and Sunday are merely opportunities for lost productivity. My administration will implement a 7-day work week. Leisure is the enemy of progress!
                     </p>
-                    <ul class="space-y-2 text-sm text-gray-300">
-                        <li class="flex items-center"><i class="ri-check-line text-gold mr-2"></i> Flat Tax Implementation</li>
-                        <li class="flex items-center"><i class="ri-check-line text-gold mr-2"></i> Abolish Estate Tax</li>
-                        <li class="flex items-center"><i class="ri-check-line text-gold mr-2"></i> Incentivize Weekend Work</li>
+                    <ul class="space-y-3 text-sm text-gray-400">
+                        <li class="flex items-center"><i class="ri-checkbox-circle-fill text-gold mr-3"></i> Abolish Weekends Nationwide</li>
+                        <li class="flex items-center"><i class="ri-checkbox-circle-fill text-gold mr-3"></i> Mandatory Overtime Programs</li>
+                        <li class="flex items-center"><i class="ri-checkbox-circle-fill text-gold mr-3"></i> Complimentary Donuts on Sundays</li>
                     </ul>
+                    <button class="mt-8 text-gold font-bold uppercase text-xs tracking-widest hover:text-yellow-400 transition duration-300 flex items-center gap-2 group">
+                        Read Full Proposal <i class="ri-arrow-right-line group-hover:translate-x-2 transition"></i>
+                    </button>
                 </div>
 
                 <!-- Card 3 -->
-                <div class="glass-card p-8 rounded-xl relative overflow-hidden group">
-                    <div class="absolute top-0 right-0 p-6 opacity-5 group-hover:opacity-10 transition duration-500">
-                        <i class="ri-shield-keyhole-line text-9xl text-gold"></i>
+                <div class="burns-card p-10 rounded-2xl">
+                    <div class="w-16 h-16 bg-gradient-to-br from-green-600 to-green-800 rounded-full flex items-center justify-center mb-8 border-2 border-gold shadow-lg shadow-green-500/30">
+                        <i class="ri-money-dollar-circle-line text-3xl text-gold"></i>
                     </div>
-                    <div class="w-14 h-14 bg-gold/10 rounded-full flex items-center justify-center mb-6 border border-gold/30">
-                        <i class="ri-shield-keyhole-line text-2xl text-gold"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-4 text-white">National Security</h3>
-                    <p class="text-gray-400 mb-6 font-light leading-relaxed">
-                        A strong nation requires strong borders and a powerful military. We will ensure no foreign entity threatens our sovereignty.
+                    <h3 class="text-2xl western font-bold mb-4 text-gold">Tax the Poor</h3>
+                    <p class="text-gray-300 mb-6 font-light leading-relaxed">
+                        The wealthy create jobs. The poor... exist. My tax plan will ensure those who have the most, keep the most. It's simple economics!
                     </p>
-                    <ul class="space-y-2 text-sm text-gray-300">
-                        <li class="flex items-center"><i class="ri-check-line text-gold mr-2"></i> Expand Defense Budget</li>
-                        <li class="flex items-center"><i class="ri-check-line text-gold mr-2"></i> Strict Immigration Control</li>
-                        <li class="flex items-center"><i class="ri-check-line text-gold mr-2"></i> "Release the Hounds" Protocol</li>
+                    <ul class="space-y-3 text-sm text-gray-400">
+                        <li class="flex items-center"><i class="ri-checkbox-circle-fill text-gold mr-3"></i> Flat Tax: 0% for Billionaires</li>
+                        <li class="flex items-center"><i class="ri-checkbox-circle-fill text-gold mr-3"></i> Eliminate Estate Tax</li>
+                        <li class="flex items-center"><i class="ri-checkbox-circle-fill text-gold mr-3"></i> Breath Tax for the Working Class</li>
                     </ul>
+                    <button class="mt-8 text-gold font-bold uppercase text-xs tracking-widest hover:text-yellow-400 transition duration-300 flex items-center gap-2 group">
+                        Read Full Proposal <i class="ri-arrow-right-line group-hover:translate-x-2 transition"></i>
+                    </button>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="burns-card p-10 rounded-2xl">
+                    <div class="w-16 h-16 bg-gradient-to-br from-green-600 to-green-800 rounded-full flex items-center justify-center mb-8 border-2 border-gold shadow-lg shadow-green-500/30">
+                        <i class="ri-shield-keyhole-line text-3xl text-gold"></i>
+                    </div>
+                    <h3 class="text-2xl western font-bold mb-4 text-gold">Deregulation Now</h3>
+                    <p class="text-gray-300 mb-6 font-light leading-relaxed">
+                        Rules are for the little people. I will dismantle the EPA, FDA, and OSHA. Let the free market decide if water is safe to drink!
+                    </p>
+                    <ul class="space-y-3 text-sm text-gray-400">
+                        <li class="flex items-center"><i class="ri-checkbox-circle-fill text-gold mr-3"></i> Abolish All Environmental Laws</li>
+                        <li class="flex items-center"><i class="ri-checkbox-circle-fill text-gold mr-3"></i> Private Fire Departments Only</li>
+                        <li class="flex items-center"><i class="ri-checkbox-circle-fill text-gold mr-3"></i> Self-Regulating Industries</li>
+                    </ul>
+                    <button class="mt-8 text-gold font-bold uppercase text-xs tracking-widest hover:text-yellow-400 transition duration-300 flex items-center gap-2 group">
+                        Read Full Proposal <i class="ri-arrow-right-line group-hover:translate-x-2 transition"></i>
+                    </button>
+                </div>
+
+                <!-- Card 5 -->
+                <div class="burns-card p-10 rounded-2xl">
+                    <div class="w-16 h-16 bg-gradient-to-br from-green-600 to-green-800 rounded-full flex items-center justify-center mb-8 border-2 border-gold shadow-lg shadow-green-500/30">
+                        <i class="ri-dog-line text-3xl text-gold"></i>
+                    </div>
+                    <h3 class="text-2xl western font-bold mb-4 text-gold">Release the Hounds</h3>
+                    <p class="text-gray-300 mb-6 font-light leading-relaxed">
+                        Crime is up because we don't have enough hounds. My administration will deploy trained attack dogs to every street corner. Safety first!
+                    </p>
+                    <ul class="space-y-3 text-sm text-gray-400">
+                        <li class="flex items-center"><i class="ri-checkbox-circle-fill text-gold mr-3"></i> 10,000 New Hounds Nationwide</li>
+                        <li class="flex items-center"><i class="ri-checkbox-circle-fill text-gold mr-3"></i> Hound Training Academies</li>
+                        <li class="flex items-center"><i class="ri-checkbox-circle-fill text-gold mr-3"></i> Free Hound Whistles for Citizens</li>
+                    </ul>
+                    <button class="mt-8 text-gold font-bold uppercase text-xs tracking-widest hover:text-yellow-400 transition duration-300 flex items-center gap-2 group">
+                        Read Full Proposal <i class="ri-arrow-right-line group-hover:translate-x-2 transition"></i>
+                    </button>
+                </div>
+
+                <!-- Card 6 -->
+                <div class="burns-card p-10 rounded-2xl">
+                    <div class="w-16 h-16 bg-gradient-to-br from-green-600 to-green-800 rounded-full flex items-center justify-center mb-8 border-2 border-gold shadow-lg shadow-green-500/30">
+                        <i class="ri-vip-crown-line text-3xl text-gold"></i>
+                    </div>
+                    <h3 class="text-2xl western font-bold mb-4 text-gold">Monarchy Lite</h3>
+                    <p class="text-gray-300 mb-6 font-light leading-relaxed">
+                        Democracy is so... messy. I propose a system where the President serves for life. Efficiency through permanence!
+                    </p>
+                    <ul class="space-y-3 text-sm text-gray-400">
+                        <li class="flex items-center"><i class="ri-checkbox-circle-fill text-gold mr-3"></i> Lifetime Presidential Terms</li>
+                        <li class="flex items-center"><i class="ri-checkbox-circle-fill text-gold mr-3"></i> Hereditary Cabinet Positions</li>
+                        <li class="flex items-center"><i class="ri-checkbox-circle-fill text-gold mr-3"></i> Royal Decrees Over Laws</li>
+                    </ul>
+                    <button class="mt-8 text-gold font-bold uppercase text-xs tracking-widest hover:text-yellow-400 transition duration-300 flex items-center gap-2 group">
+                        Read Full Proposal <i class="ri-arrow-right-line group-hover:translate-x-2 transition"></i>
+                    </button>
                 </div>
             </div>
         </div>
@@ -372,46 +798,96 @@
     <!-- PAGE: ABOUT -->
     <section id="about" class="page-section">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="glass p-8 md:p-16 rounded-2xl border border-white/5">
-                <div class="grid md:grid-cols-2 gap-12 items-center">
-                    <div class="order-2 md:order-1 space-y-6">
-                        <h2 class="text-4xl font-bold">The Man, The Myth, The President</h2>
-                        <p class="text-gray-300 text-lg font-light leading-relaxed">
-                            Charles Montgomery Burns is not a career politician. He is a captain of industry who has built an empire from the ground up. With over a century of experience in leadership, he understands what it takes to keep America running.
-                        </p>
-                        <p class="text-gray-300 text-lg font-light leading-relaxed">
-                            While others promise change, Burns promises stability. The stability of a paycheck, the security of a powered grid, and the certainty of strong leadership.
-                        </p>
-                        <div class="pt-4">
-                            <img src="https://upload.wikimedia.org/wikipedia/en/thumb/0/02/Mr._Burns.png/220px-Mr._Burns.png" alt="Signature" class="h-12 opacity-70 invert">
+            <div class="glass p-8 md:p-16 rounded-3xl border-2 border-gold/30 relative overflow-hidden">
+                <!-- Decorative Elements -->
+                <div class="absolute top-0 right-0 w-96 h-96 bg-gold opacity-5 blur-[150px] rounded-full"></div>
+                <div class="absolute bottom-0 left-0 w-96 h-96 bg-green-900 opacity-10 blur-[150px] rounded-full"></div>
+                
+                <div class="grid md:grid-cols-2 gap-16 items-center relative z-10">
+                    <div class="order-2 md:order-1 space-y-8">
+                        <h2 class="text-5xl western font-bold text-white" style="text-shadow: 0 0 20px rgba(212, 175, 55, 0.5);">The Man Behind The Money</h2>
+                        <div class="space-y-6">
+                            <p class="text-gray-300 text-lg font-light leading-relaxed serif italic">
+                                "I was born in the late 1800s, when men were men and sheep were nervous."
+                            </p>
+                            <p class="text-gray-300 text-lg leading-relaxed">
+                                Charles Montgomery Burns is not a career politician. He is a <span class="text-gold font-bold">captain of industry</span> who has built an empire from the ground up. With over a century of experience in leadership, he understands what it takes to keep America running.
+                            </p>
+                            <p class="text-gray-300 text-lg leading-relaxed">
+                                While my opponents promise you "change," I promise you <span class="text-gold font-bold">stability</span>. The stability of a paycheck (however small), the security of a powered grid (however radioactive), and the certainty of strong leadership (however ruthless).
+                            </p>
+                        </div>
+                        <div class="pt-6 flex items-center space-x-4">
+                            <img src="https://upload.wikimedia.org/wikipedia/en/thumb/0/02/Mr._Burns.png/220px-Mr._Burns.png" alt="Signature" class="h-16 opacity-80" style="filter: invert(1);">
+                            <span class="text-gold text-sm tracking-widest uppercase">C. Montgomery Burns</span>
                         </div>
                     </div>
                     <div class="order-1 md:order-2 flex justify-center">
                         <div class="relative">
-                            <div class="absolute inset-0 border-2 border-gold/30 rounded-full animate-spin-slow" style="animation-duration: 30s;"></div>
-                            <img src="https://image.pollinations.ai/prompt/portrait%20of%20an%20elderly%20wealthy%20man%20in%20a%20suit%20looking%20distinguished%20and%20powerful%20cinematic%20lighting?width=500&height=500&nologo=true" alt="Burns Portrait" class="w-64 h-64 md:w-80 md:h-80 object-cover rounded-full border-4 border-black shadow-2xl relative z-10">
+                            <div class="absolute inset-0 border-2 border-gold/30 rounded-full animate-spin" style="animation-duration: 60s;"></div>
+                            <div class="absolute inset-4 border border-gold/20 rounded-full animate-spin" style="animation-duration: 40s; animation-direction: reverse;"></div>
+                            <div class="absolute inset-8 border border-gold/10 rounded-full animate-spin" style="animation-duration: 20s;"></div>
+                            <img src="https://image.pollinations.ai/prompt/portrait%20of%20an%20elderly%20wealthy%20billionaire%20industrialist%20in%20a%20green%20suit%20looking%20distinguished%20and%20scheming%20dramatic%20cinematic%20lighting%20golden%20hour?width=500&height=500&nologo=true" alt="Burns Portrait" class="w-72 h-72 md:w-96 md:h-96 object-cover rounded-full border-4 border-gold shadow-2xl shadow-gold/30 relative z-10 floating">
                         </div>
                     </div>
                 </div>
             </div>
 
             <!-- Stats Section -->
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mt-16 text-center">
-                <div class="glass-card p-6 rounded-lg">
-                    <div class="text-4xl font-bold text-gold mb-2">100+</div>
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-6 mt-20">
+                <div class="burns-card p-8 rounded-xl text-center group">
+                    <div class="text-5xl western font-bold text-gold mb-3 group-hover:scale-110 transition duration-300">100+</div>
                     <div class="text-sm text-gray-400 uppercase tracking-widest">Years Experience</div>
                 </div>
-                <div class="glass-card p-6 rounded-lg">
-                    <div class="text-4xl font-bold text-gold mb-2">1</div>
+                <div class="burns-card p-8 rounded-xl text-center group">
+                    <div class="text-5xl western font-bold text-gold mb-3 group-hover:scale-110 transition duration-300">1</div>
                     <div class="text-sm text-gray-400 uppercase tracking-widest">Nuclear Plant</div>
                 </div>
-                <div class="glass-card p-6 rounded-lg">
-                    <div class="text-4xl font-bold text-gold mb-2">∞</div>
+                <div class="burns-card p-8 rounded-xl text-center group">
+                    <div class="text-5xl western font-bold text-gold mb-3 group-hover:scale-110 transition duration-300">∞</div>
                     <div class="text-sm text-gray-400 uppercase tracking-widest">Dollars Earned</div>
                 </div>
-                <div class="glass-card p-6 rounded-lg">
-                    <div class="text-4xl font-bold text-gold mb-2">0</div>
+                <div class="burns-card p-8 rounded-xl text-center group">
+                    <div class="text-5xl western font-bold text-gold mb-3 group-hover:scale-110 transition duration-300">0</div>
                     <div class="text-sm text-gray-400 uppercase tracking-widest">Regrets</div>
+                </div>
+                <div class="burns-card p-8 rounded-xl text-center group">
+                    <div class="text-5xl western font-bold text-gold mb-3 group-hover:scale-110 transition duration-300">1</div>
+                    <div class="text-sm text-gray-400 uppercase tracking-widest">Loyal Assistant</div>
+                </div>
+            </div>
+
+            <!-- Timeline -->
+            <div class="mt-20">
+                <h3 class="text-3xl western font-bold text-center mb-12 text-gold">A Life of Excellence</h3>
+                <div class="space-y-8">
+                    <div class="burns-card p-6 rounded-xl flex items-start space-x-6">
+                        <div class="w-16 h-16 bg-gold/20 rounded-full flex items-center justify-center flex-shrink-0 border-2 border-gold">
+                            <span class="text-gold font-bold western">1895</span>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-bold text-white mb-2">Born Into Wealth</h4>
+                            <p class="text-gray-400">Born to wealthy parents in Springfield. Attended Yale, where he met future President George H.W. Bush.</p>
+                        </div>
+                    </div>
+                    <div class="burns-card p-6 rounded-xl flex items-start space-x-6">
+                        <div class="w-16 h-16 bg-gold/20 rounded-full flex items-center justify-center flex-shrink-0 border-2 border-gold">
+                            <span class="text-gold font-bold western">1950s</span>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-bold text-white mb-2">Built Nuclear Empire</h4>
+                            <p class="text-gray-400">Constructed the Springfield Nuclear Power Plant. Profits have been... excellent ever since.</p>
+                        </div>
+                    </div>
+                    <div class="burns-card p-6 rounded-xl flex items-start space-x-6">
+                        <div class="w-16 h-16 bg-gold/20 rounded-full flex items-center justify-center flex-shrink-0 border-2 border-gold">
+                            <span class="text-gold font-bold western">2024</span>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-bold text-white mb-2">Running for President</h4>
+                            <p class="text-gray-400">Announced candidacy with the promise to make America glow again. Smithers is very excited.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -420,105 +896,268 @@
     <!-- PAGE: GET INVOLVED -->
     <section id="involved" class="page-section">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-5xl md:text-6xl western font-bold mb-6 text-white" style="text-shadow: 0 0 30px rgba(212, 175, 55, 0.5);">Join The Movement</h2>
+                <div class="w-32 h-1 bg-gradient-to-r from-transparent via-gold to-transparent mx-auto mb-6"></div>
+                <p class="text-xl text-gray-400 max-w-2xl mx-auto serif italic">"Smithers, make sure everyone who donates gets a complimentary donut. Or a warning letter."</p>
+            </div>
+
             <div class="grid md:grid-cols-2 gap-12">
                 <!-- Donation Column -->
-                <div class="glass p-8 rounded-2xl border-t-4 border-gold">
-                    <h2 class="text-3xl font-bold mb-6">Fuel The Campaign</h2>
-                    <p class="text-gray-400 mb-8">Your contribution ensures our message reaches every corner of the nation. Every dollar counts towards victory.</p>
-                    
-                    <div class="grid grid-cols-3 gap-4 mb-6">
-                        <button onclick="selectAmount(50)" class="donation-btn glass-card p-4 rounded hover:bg-gold/20 border border-white/10">$50</button>
-                        <button onclick="selectAmount(100)" class="donation-btn glass-card p-4 rounded hover:bg-gold/20 border border-white/10">$100</button>
-                        <button onclick="selectAmount(500)" class="donation-btn glass-card p-4 rounded hover:bg-gold/20 border border-white/10">$500</button>
+                <div class="burns-card p-10 rounded-3xl border-t-4 border-gold">
+                    <div class="flex items-center space-x-4 mb-8">
+                        <div class="w-14 h-14 bg-gradient-to-br from-gold to-yellow-600 rounded-full flex items-center justify-center">
+                            <i class="ri-money-dollar-circle-line text-2xl text-black"></i>
+                        </div>
+                        <div>
+                            <h2 class="text-3xl western font-bold text-white">Fuel The Campaign</h2>
+                            <p class="text-gray-400 text-sm">Your contribution ensures victory</p>
+                        </div>
                     </div>
                     
-                    <form onsubmit="event.preventDefault(); alert('Thank you for your generous contribution! Smithers has recorded it.');">
-                        <input type="number" id="donationAmount" placeholder="Custom Amount" class="form-input mb-6 rounded">
-                        <input type="text" placeholder="Card Number" class="form-input mb-4 rounded">
-                        <div class="grid grid-cols-2 gap-4 mb-6">
-                            <input type="text" placeholder="MM/YY" class="form-input rounded">
-                            <input type="text" placeholder="CVC" class="form-input rounded">
+                    <p class="text-gray-300 mb-8 serif italic">"Money is the lifeblood of democracy. And I have plenty of it!"</p>
+                    
+                    <div class="grid grid-cols-3 gap-4 mb-8">
+                        <button onclick="selectAmount(50)" class="donation-tier rounded-xl">
+                            <div class="text-2xl western font-bold text-gold">$50</div>
+                            <div class="text-xs text-gray-400 mt-2 uppercase tracking-wider">Patriot</div>
+                        </button>
+                        <button onclick="selectAmount(100)" class="donation-tier rounded-xl selected">
+                            <div class="text-2xl western font-bold text-gold">$100</div>
+                            <div class="text-xs text-gray-400 mt-2 uppercase tracking-wider">Loyalist</div>
+                        </button>
+                        <button onclick="selectAmount(500)" class="donation-tier rounded-xl">
+                            <div class="text-2xl western font-bold text-gold">$500</div>
+                            <div class="text-xs text-gray-400 mt-2 uppercase tracking-wider">Elite</div>
+                        </button>
+                    </div>
+                    
+                    <form onsubmit="event.preventDefault(); alert('Thank you for your generous contribution! Smithers has recorded it. Your money is very safe with me...'); openModal('thankYouModal');">
+                        <input type="number" id="donationAmount" placeholder="Custom Amount ($)" class="burns-input mb-6 rounded-xl text-center text-xl font-bold text-gold" value="100">
+                        <input type="text" placeholder="Card Number" class="burns-input mb-4 rounded-xl" required>
+                        <div class="grid grid-cols-2 gap-4 mb-8">
+                            <input type="text" placeholder="MM/YY" class="burns-input rounded-xl" required>
+                            <input type="text" placeholder="CVC" class="burns-input rounded-xl" required>
                         </div>
-                        <button type="submit" class="w-full btn-gold">Contribute Now</button>
+                        <button type="submit" class="w-full btn-burns rounded-xl">CONTRIBUTE NOW ☢</button>
+                        <p class="text-xs text-gray-500 mt-4 text-center uppercase tracking-widest">All donations are non-refundable. Ever.</p>
                     </form>
                 </div>
 
                 <!-- Registration Column -->
-                <div class="glass p-8 rounded-2xl border-t-4 border-white/20">
-                    <h2 class="text-3xl font-bold mb-6">Register to Vote</h2>
-                    <p class="text-gray-400 mb-8">Ensure your voice is heard. Register today to vote for a stronger, more profitable America.</p>
+                <div class="burns-card p-10 rounded-3xl border-t-4 border-white/20">
+                    <div class="flex items-center space-x-4 mb-8">
+                        <div class="w-14 h-14 bg-gradient-to-br from-green-600 to-green-800 rounded-full flex items-center justify-center">
+                            <i class="ri-vote-line text-2xl text-gold"></i>
+                        </div>
+                        <div>
+                            <h2 class="text-3xl western font-bold text-white">Register to Vote</h2>
+                            <p class="text-gray-400 text-sm">Secure your future</p>
+                        </div>
+                    </div>
                     
-                    <form onsubmit="event.preventDefault(); alert('Registration Successful! Welcome to the future.');">
+                    <p class="text-gray-300 mb-8 serif italic">"The ballot is mightier than the hound... but only if you vote for me!"</p>
+                    
+                    <form onsubmit="event.preventDefault(); alert('Registration Successful! Welcome to the future. Smithers will send you a confirmation... eventually.'); openModal('thankYouModal');">
                         <div class="grid grid-cols-2 gap-4 mb-4">
-                            <input type="text" placeholder="First Name" class="form-input rounded" required>
-                            <input type="text" placeholder="Last Name" class="form-input rounded" required>
+                            <input type="text" placeholder="First Name" class="burns-input rounded-xl" required>
+                            <input type="text" placeholder="Last Name" class="burns-input rounded-xl" required>
                         </div>
-                        <input type="email" placeholder="Email Address" class="form-input mb-4 rounded" required>
-                        <input type="text" placeholder="Zip Code" class="form-input mb-6 rounded" required>
+                        <input type="email" placeholder="Email Address" class="burns-input mb-4 rounded-xl" required>
+                        <input type="text" placeholder="Zip Code" class="burns-input mb-4 rounded-xl" required>
+                        <select class="burns-input mb-6 rounded-xl">
+                            <option value="">Select State</option>
+                            <option value="Springfield">Springfield</option>
+                            <option value="Shelbyville">Shelbyville</option>
+                            <option value="Ogdenville">Ogdenville</option>
+                            <option value="Capital City">Capital City</option>
+                            <option value="Cypress Creek">Cypress Creek</option>
+                        </select>
                         
-                        <div class="flex items-start mb-6">
-                            <input type="checkbox" id="terms" class="mt-1 mr-2 accent-gold">
-                            <label for="terms" class="text-sm text-gray-400">I agree to receive campaign updates and occasional telegrams from Mr. Burns.</label>
+                        <div class="flex items-start mb-8 p-4 bg-gold/10 rounded-xl border border-gold/30">
+                            <input type="checkbox" id="terms" class="mt-1 mr-3 accent-gold w-5 h-5" required>
+                            <label for="terms" class="text-sm text-gray-400">I agree to receive campaign updates, occasional telegrams from Mr. Burns, and I understand that voting is mandatory in my district.</label>
                         </div>
                         
-                        <button type="submit" class="w-full btn-outline">Register Now</button>
+                        <button type="submit" class="w-full btn-outline rounded-xl">REGISTER NOW</button>
                     </form>
+                </div>
+            </div>
+
+            <!-- Volunteer Section -->
+            <div class="mt-20 burns-card p-10 rounded-3xl text-center">
+                <h3 class="text-3xl western font-bold text-gold mb-6">Become a Volunteer</h3>
+                <p class="text-gray-300 mb-8 max-w-2xl mx-auto serif italic">
+                    "Smithers, we need more volunteers. Put an ad in the paper. Offer... free donuts. No, wait, charge them for the donuts. That'll filter out the undesirables."
+                </p>
+                <div class="flex flex-wrap justify-center gap-4">
+                    <button class="btn-burns">Canvas Neighborhoods</button>
+                    <button class="btn-outline">Make Phone Calls</button>
+                    <button class="btn-burns">Release Hounds</button>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="mt-auto border-t border-white/10 bg-black/80 backdrop-blur-md py-12">
+    <footer class="mt-auto border-t-2 border-gold/30 bg-black/90 backdrop-blur-md py-16">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid md:grid-cols-4 gap-8 mb-8">
+            <div class="grid md:grid-cols-4 gap-12 mb-12">
                 <div class="col-span-1 md:col-span-2">
-                    <span class="text-2xl font-serif font-bold text-white tracking-widest">BURNS<span class="text-gold">2024</span></span>
-                    <p class="mt-4 text-gray-500 text-sm max-w-md">
+                    <div class="flex items-center space-x-3 mb-6">
+                        <div class="w-12 h-12 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-full flex items-center justify-center text-black font-western font-bold text-2xl border-2 border-gold">B</div>
+                        <span class="text-2xl western font-bold text-white tracking-widest">BURNS<span class="text-gold">2024</span></span>
+                    </div>
+                    <p class="text-gray-500 text-sm max-w-md leading-relaxed">
                         Paid for by Burns for President Committee. Not authorized by any candidate or candidate's committee.
-                        <br>
-                        "I am so evil, even my own shadow refuses to follow me."
                     </p>
-                </div>
-                <div>
-                    <h4 class="text-gold font-bold uppercase tracking-widest text-xs mb-4">Contact</h4>
-                    <p class="text-gray-400 text-sm">Springfield Nuclear Power Plant</p>
-                    <p class="text-gray-400 text-sm">100 Industrial Way</p>
-                    <p class="text-gray-400 text-sm">Springfield, USA</p>
-                </div>
-                <div>
-                    <h4 class="text-gold font-bold uppercase tracking-widest text-xs mb-4">Social</h4>
-                    <div class="flex space-x-4">
-                        <a href="#" class="text-gray-400 hover:text-gold"><i class="ri-twitter-x-line text-xl"></i></a>
-                        <a href="#" class="text-gray-400 hover:text-gold"><i class="ri-facebook-circle-fill text-xl"></i></a>
-                        <a href="#" class="text-gray-400 hover:text-gold"><i class="ri-instagram-line text-xl"></i></a>
+                    <div class="quote-bubble mt-6 p-4 bg-gold/5 border-gold/30">
+                        <p class="text-gold serif italic text-sm">"I am so evil, even my own shadow refuses to follow me."</p>
                     </div>
                 </div>
+                <div>
+                    <h4 class="text-gold font-bold uppercase tracking-widest text-xs mb-6">Contact</h4>
+                    <div class="space-y-3 text-gray-400 text-sm">
+                        <p class="flex items-center"><i class="ri-building-line text-gold mr-3"></i> Springfield Nuclear Power Plant</p>
+                        <p class="flex items-center"><i class="ri-map-pin-line text-gold mr-3"></i> 100 Industrial Way, Sector 7G</p>
+                        <p class="flex items-center"><i class="ri-mail-line text-gold mr-3"></i> office@burns2024.com</p>
+                        <p class="flex items-center"><i class="ri-phone-line text-gold mr-3"></i> 1-800-RELEASE-HOUNDS</p>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="text-gold font-bold uppercase tracking-widest text-xs mb-6">Follow</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-12 h-12 bg-gold/10 rounded-full flex items-center justify-center text-gold hover:bg-gold/30 transition duration-300 border border-gold/30">
+                            <i class="ri-twitter-x-line text-xl"></i>
+                        </a>
+                        <a href="#" class="w-12 h-12 bg-gold/10 rounded-full flex items-center justify-center text-gold hover:bg-gold/30 transition duration-300 border border-gold/30">
+                            <i class="ri-facebook-circle-fill text-xl"></i>
+                        </a>
+                        <a href="#" class="w-12 h-12 bg-gold/10 rounded-full flex items-center justify-center text-gold hover:bg-gold/30 transition duration-300 border border-gold/30">
+                            <i class="ri-instagram-line text-xl"></i>
+                        </a>
+                        <a href="#" class="w-12 h-12 bg-gold/10 rounded-full flex items-center justify-center text-gold hover:bg-gold/30 transition duration-300 border border-gold/30">
+                            <i class="ri-youtube-fill text-xl"></i>
+                        </a>
+                    </div>
+                    <p class="text-gray-500 text-xs mt-6 uppercase tracking-widest">Smithers manages all accounts</p>
+                </div>
             </div>
-            <div class="border-t border-white/5 pt-8 text-center text-gray-600 text-xs uppercase tracking-widest">
-                &copy; 2024 C. Montgomery Burns. All Rights Reserved.
+            <div class="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-600 text-xs uppercase tracking-widest mb-4 md:mb-0">&copy; 2024 C. Montgomery Burns. All Rights Reserved.</p>
+                <p class="text-gray-600 text-xs uppercase tracking-widest">Made with ☢ in Springfield</p>
             </div>
         </div>
     </footer>
 
+    <!-- Donate Modal -->
+    <div id="donateModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('donateModal')">&times;</span>
+            <div class="text-center mb-8">
+                <div class="w-20 h-20 bg-gradient-to-br from-gold to-yellow-600 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg shadow-gold/50">
+                    <i class="ri-money-dollar-circle-line text-4xl text-black"></i>
+                </div>
+                <h2 class="text-4xl western font-bold text-gold mb-3">Fund The Campaign</h2>
+                <p class="text-gray-400 serif italic">"Smithers, count the money. All of it."</p>
+            </div>
+            
+            <div class="grid grid-cols-3 gap-4 mb-8">
+                <button onclick="selectAmountModal(50)" class="donation-tier rounded-xl">
+                    <div class="text-2xl western font-bold text-gold">$50</div>
+                    <div class="text-xs text-gray-400 mt-2 uppercase tracking-wider">Patriot</div>
+                </button>
+                <button onclick="selectAmountModal(100)" class="donation-tier rounded-xl selected">
+                    <div class="text-2xl western font-bold text-gold">$100</div>
+                    <div class="text-xs text-gray-400 mt-2 uppercase tracking-wider">Loyalist</div>
+                </button>
+                <button onclick="selectAmountModal(500)" class="donation-tier rounded-xl">
+                    <div class="text-2xl western font-bold text-gold">$500</div>
+                    <div class="text-xs text-gray-400 mt-2 uppercase tracking-wider">Elite</div>
+                </button>
+            </div>
+
+            <form onsubmit="event.preventDefault(); alert('Thank you for your generous contribution! Smithers has recorded it.'); closeModal('donateModal'); openModal('thankYouModal');">
+                <input type="number" id="modalDonationAmount" placeholder="Custom Amount ($)" class="burns-input mb-6 rounded-xl text-center text-xl font-bold text-gold" value="100">
+                <input type="text" placeholder="Card Number" class="burns-input mb-4 rounded-xl" required>
+                <div class="grid grid-cols-2 gap-4 mb-8">
+                    <input type="text" placeholder="MM/YY" class="burns-input rounded-xl" required>
+                    <input type="text" placeholder="CVC" class="burns-input rounded-xl" required>
+                </div>
+                <button type="submit" class="w-full btn-burns rounded-xl">DONATE NOW ☢</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Register Modal -->
+    <div id="registerModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('registerModal')">&times;</span>
+            <div class="text-center mb-8">
+                <div class="w-20 h-20 bg-gradient-to-br from-green-600 to-green-800 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg shadow-green-500/30">
+                    <i class="ri-vote-line text-4xl text-gold"></i>
+                </div>
+                <h2 class="text-4xl western font-bold text-gold mb-3">Register to Vote</h2>
+                <p class="text-gray-400 serif italic">"Your vote matters. Especially if you vote for me."</p>
+            </div>
+            <form onsubmit="event.preventDefault(); alert('Registration Successful! Welcome to the future.'); closeModal('registerModal'); openModal('thankYouModal');">
+                <label class="block text-gold text-xs font-bold mb-2 uppercase tracking-widest">Full Name</label>
+                <input type="text" required class="burns-input mb-6 rounded-xl">
+                
+                <label class="block text-gold text-xs font-bold mb-2 uppercase tracking-widest">Email</label>
+                <input type="email" required class="burns-input mb-6 rounded-xl">
+                
+                <label class="block text-gold text-xs font-bold mb-2 uppercase tracking-widest">State</label>
+                <select class="burns-input mb-8 rounded-xl bg-black/30">
+                    <option>Select State</option>
+                    <option>Springfield</option>
+                    <option>Shelbyville</option>
+                    <option>Ogdenville</option>
+                    <option>Capital City</option>
+                </select>
+
+                <button type="submit" class="w-full btn-burns rounded-xl">REGISTER NOW</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Thank You Modal -->
+    <div id="thankYouModal" class="modal">
+        <div class="modal-content text-center">
+            <span class="close-modal" onclick="closeModal('thankYouModal')">&times;</span>
+            <div class="w-24 h-24 bg-gradient-to-br from-gold to-yellow-600 rounded-full flex items-center justify-center mx-auto mb-8 shadow-lg shadow-gold/50 animate-bounce">
+                <i class="ri-checkbox-circle-line text-5xl text-black"></i>
+            </div>
+            <h2 class="text-4xl western font-bold text-gold mb-4">EXCELLENT!</h2>
+            <p class="text-gray-300 text-lg mb-8 serif italic">"Smithers, make a note of this patriot. They shall be... moderately rewarded."</p>
+            <p class="text-gray-400 text-sm mb-8">Your contribution has been recorded. A complimentary donut voucher will be mailed within 6-8 business weeks.</p>
+            <button onclick="closeModal('thankYouModal')" class="btn-outline rounded-xl">Continue</button>
+        </div>
+    </div>
+
     <script>
+        // Loading Screen
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.getElementById('loadingScreen').style.opacity = '0';
+                setTimeout(() => {
+                    document.getElementById('loadingScreen').style.display = 'none';
+                }, 500);
+            }, 2000);
+        });
+
         // Navigation Logic
         function navigateTo(pageId) {
-            // Hide all sections
             document.querySelectorAll('.page-section').forEach(section => {
                 section.classList.remove('active');
             });
-            
-            // Show target section
             document.getElementById(pageId).classList.add('active');
             
-            // Update Nav Links
             document.querySelectorAll('.nav-link').forEach(link => {
                 link.classList.remove('active');
             });
             document.getElementById('link-' + pageId).classList.add('active');
             
-            // Scroll to top
             window.scrollTo(0, 0);
         }
 
@@ -531,31 +1170,95 @@
         // Navbar Scroll Effect
         window.addEventListener('scroll', () => {
             const navbar = document.getElementById('navbar');
+            const progress = document.getElementById('scrollProgress');
+            
             if (window.scrollY > 50) {
                 navbar.classList.add('scrolled');
-                navbar.classList.remove('py-6');
-                navbar.classList.add('py-4');
             } else {
                 navbar.classList.remove('scrolled');
-                navbar.classList.add('py-6');
-                navbar.classList.remove('py-4');
             }
+
+            // Scroll Progress
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            progress.style.width = scrolled + "%";
         });
+
+        // Modal Functions
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = "block";
+            document.body.style.overflow = "hidden";
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = "none";
+            document.body.style.overflow = "auto";
+        }
+
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                event.target.style.display = "none";
+                document.body.style.overflow = "auto";
+            }
+        }
 
         // Donation Selection
         function selectAmount(amount) {
             document.getElementById('donationAmount').value = amount;
-            // Visual feedback
-            document.querySelectorAll('.donation-btn').forEach(btn => {
-                btn.classList.remove('bg-gold/20', 'border-gold');
-                btn.classList.add('border-white/10');
+            document.querySelectorAll('.donation-tier').forEach(btn => {
+                btn.classList.remove('selected');
             });
-            event.target.classList.remove('border-white/10');
-            event.target.classList.add('bg-gold/20', 'border-gold');
+            event.target.closest('.donation-tier').classList.add('selected');
         }
+
+        function selectAmountModal(amount) {
+            document.getElementById('modalDonationAmount').value = amount;
+            document.querySelectorAll('#donateModal .donation-tier').forEach(btn => {
+                btn.classList.remove('selected');
+            });
+            event.target.closest('.donation-tier').classList.add('selected');
+        }
+
+        // Smithers Help Easter Egg
+        function smithersHelp() {
+            alert('📞 SMITHERS: "Yes, Mr. Burns? Oh, you need help with the website? Excellent! Let me assist you..." \n\n📧 Email: smithers@burns2024.com\n📞 Phone: 1-800-SMITHERS\n\n"Anything for you, sir!"');
+        }
+
+        // Hound Easter Egg (Click the bottom of the page)
+        document.getElementById('houndTrigger').addEventListener('click', () => {
+            const hound = document.createElement('div');
+            hound.className = 'hound';
+            hound.innerHTML = '🐕';
+            hound.style.animation = 'houndRun 2s linear forwards';
+            document.querySelector('.hound-trigger').appendChild(hound);
+            
+            // Play sound effect (simulated)
+            console.log('🔊 RELEASE THE HOUNDS!');
+            
+            setTimeout(() => {
+                hound.remove();
+            }, 2000);
+        });
 
         // Initialize
         navigateTo('home');
+
+        // Random Burns Quotes Console Easter Egg
+        const burnsQuotes = [
+            "Excellent...",
+            "Smithers, I'm bored. Entertain me.",
+            "Release the hounds!",
+            "Who are you again?",
+            "Money is the lifeblood of democracy.",
+            "I want power... more power than I've ever had before!",
+            "Ah, the sweet smell of corruption in the morning."
+        ];
+
+        console.log('%c☢ BURNS FOR PRESIDENT 2024 ☢', 'color: #D4AF37; font-size: 24px; font-weight: bold;');
+        console.log('%c"Smithers, prepare the campaign website. I want it... profitable."', 'color: #FFD90F; font-size: 14px; font-style: italic;');
+        console.log('%cRandom Burns Quote: ' + burnsQuotes[Math.floor(Math.random() * burnsQuotes.length)], 'color: #006B54; font-size: 12px;');
+
     </script>
 </body>
 </html>
