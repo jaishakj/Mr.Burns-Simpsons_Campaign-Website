@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vote Burns 2024 - Excellent.</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <!-- Chosen Palette: "Nuclear Aristocrat" -->
+    <!-- Primary: #0F172A (Slate 900 - Dark Suit Navy) -->
+    <!-- Secondary: #15803D (Green 700 - Money/Radioactive) -->
+    <!-- Accent: #FACC15 (Yellow 400 - Gold Bullion) -->
+    <!-- Background: #F8FAFC (Slate 50 - Clean Paper) -->
+
+    <!-- Application Structure Plan: 
+         1. Hero Section: Immediate visual impact with the candidate's image and slogan.
+         2. "The Burns Doctrine" (Dashboard): Interactive data visualization of his policies (Economy, Energy, Labor).
+         3. "Meet the Man": Qualitative timeline of his life/achievements.
+         4. "Voter Compliance" (Interactive Form): A rigged registration system.
+         5. "Campaign War Chest" (Donation): Interactive slider showing where money goes.
+         This structure moves from emotional appeal (Hero) to logical justification (Doctrine) to action (Compliance).
+    -->
+
+    <!-- Visualization & Content Choices:
+         1. "Trickle Down Validity" Chart (Line): Shows Wealth vs. Peasant Happiness. Goal: Prove his economic theory. Interaction: Time slider.
+         2. "Budget Allocation" Chart (Doughnut): Shows spending on Hounds vs. Charity. Goal: Transparency (of evil). Interaction: Hover details.
+         3. "Energy Output" Chart (Bar): Nuclear vs. Solar. Goal: Promote nuclear dominance.
+         CONFIRMATION: NO SVG graphics used. NO Mermaid JS used.
+    -->
+
+    <style>
+        body {
+            font-family: 'Lato', sans-serif;
+            background-color: #F8FAFC;
+            color: #1E293B;
+        }
+        h1, h2, h3, h4, .brand-font {
+            font-family: 'Cinzel', serif;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+            max-height: 400px;
+        }
+        .nuclear-glow {
+            box-shadow: 0 0 15px rgba(57, 255, 20, 0.4);
+        }
+        .gold-border {
+            border: 2px solid #FACC15;
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0F172A;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #15803D;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Navigation -->
+    <nav class="bg-slate-900 text-white sticky top-0 z-50 shadow-xl border-b-4 border-yellow-400">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <div class="flex items-center">
+                    <span class="text-3xl font-bold brand-font text-yellow-400 tracking-widest">BURNS 2024</span>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="#hero" class="hover:text-yellow-400 transition-colors px-3 py-2 rounded-md text-sm font-medium">Home</a>
+                        <a href="#doctrine" class="hover:text-yellow-400 transition-colors px-3 py-2 rounded-md text-sm font-medium">The Doctrine</a>
+                        <a href="#legacy" class="hover:text-yellow-400 transition-colors px-3 py-2 rounded-md text-sm font-medium">Legacy</a>
+                        <a href="#donate" class="bg-yellow-500 text-slate-900 hover:bg-yellow-400 px-4 py-2 rounded-md text-sm font-bold shadow-lg transform hover:scale-105 transition-all">TRIBUTE</a>
+                    </div>
+                </div>
+                <!-- Mobile menu button -->
+                <div class="-mr-2 flex md:hidden">
+                    <button type="button" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')" class="bg-slate-800 p-2 rounded-md text-gray-400 hover:text-white hover:bg-slate-700 focus:outline-none">
+                        <span class="sr-only">Open main menu</span>
+                        <span class="text-2xl">☰</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="hidden md:hidden bg-slate-800" id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#hero" class="block px-3 py-2 rounded-md text-base font-medium text-white hover:text-yellow-400">Home</a>
+                <a href="#doctrine" class="block px-3 py-2 rounded-md text-base font-medium text-white hover:text-yellow-400">The Doctrine</a>
+                <a href="#donate" class="block px-3 py-2 rounded-md text-base font-medium text-yellow-500 font-bold">Tribute</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="relative bg-slate-900 overflow-hidden">
+        <div class="absolute inset-0">
+            <!-- Abstract Background simulating a power plant control room or dark office -->
+            <div class="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-green-900 opacity-90"></div>
+            <div class="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-slate-900 to-transparent"></div>
+        </div>
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32 flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 mb-10 md:mb-0 z-10">
+                <div class="bg-yellow-400 text-slate-900 text-xs font-bold uppercase tracking-widest py-1 px-3 inline-block rounded mb-4">Official Campaign Portal</div>
+                <h1 class="text-5xl md:text-7xl font-extrabold text-white leading-tight mb-6 brand-font drop-shadow-lg">
+                    Excellent.<br>
+                    <span class="text-green-500">Leadership.</span><br>
+                    <span class="text-yellow-400 text-4xl md:text-5xl">At Any Cost.</span>
+                </h1>
+                <p class="text-xl text-gray-300 mb-8 leading-relaxed max-w-lg">
+                    Why settle for the lesser evil? Choose the greatest evil. A vote for Burns is a vote for absolute power, unrestricted capitalism, and the blocking of the sun.
+                </p>
+                <div class="flex space-x-4">
+                    <button onclick="document.getElementById('compliance').scrollIntoView({behavior: 'smooth'})" class="px-8 py-4 bg-yellow-500 hover:bg-yellow-400 text-slate-900 font-bold rounded shadow-lg transition transform hover:-translate-y-1 text-lg border-b-4 border-yellow-700">
+                        Pledge Allegiance
+                    </button>
+                    <button id="hounds-btn" class="px-8 py-4 bg-transparent border-2 border-green-500 text-green-500 hover:bg-green-900 hover:text-white font-bold rounded shadow-lg transition text-lg">
+                        Release the Hounds
+                    </button>
+                </div>
+                <p id="hounds-status" class="mt-4 text-red-500 font-bold italic h-6 opacity-0 transition-opacity duration-500">The hounds have been released...</p>
+            </div>
+            <div class="md:w-1/2 flex justify-center relative z-10">
+                <!-- Image Container mimicking a portrait -->
+                <div class="relative rounded-full border-8 border-yellow-500 shadow-2xl overflow-hidden w-80 h-80 md:w-96 md:h-96 bg-slate-800 flex items-center justify-center nuclear-glow">
+                    <!-- Placeholder for the user provided image, using text representation if image fails or for context -->
+                    <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://upload.wikimedia.org/wikipedia/en/5/56/Mr_Burns.png'); opacity: 0.9;"></div>
+                    <div class="absolute bottom-4 text-center w-full bg-slate-900 bg-opacity-80 py-2">
+                        <span class="text-yellow-400 font-bold brand-font text-xl">C. Montgomery Burns</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Introduction to Policies -->
+    <div class="bg-white py-12 border-b border-gray-200">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold text-slate-900 mb-4 brand-font">A New Age of Austerity</h2>
+            <p class="text-lg text-gray-600">
+                The following data demonstrates precisely why the "Burns Doctrine" is the only logical path forward. 
+                Commoners often misunderstand economics; we simplify it for you here. Observe how efficiency correlates 
+                directly with the removal of pesky safety regulations.
+            </p>
+        </div>
+    </div>
+
+    <!-- The Burns Doctrine (Data Section) -->
+    <section id="doctrine" class="py-16 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Chart 1: The Trickle Down Theory -->
+                <div class="bg-white p-6 rounded-lg shadow-md border-t-4 border-green-600 flex flex-col">
+                    <h3 class="text-xl font-bold text-slate-800 mb-2 brand-font">Economic Growth Projection</h3>
+                    <p class="text-sm text-gray-500 mb-4 h-12">Demonstrating how wealth eventually reaches the lower classes (projected: year 3050).</p>
+                    <div class="chart-container flex-grow">
+                        <canvas id="trickleChart"></canvas>
+                    </div>
+                    <div class="mt-4 text-center">
+                        <button id="accelerate-economy" class="text-xs bg-slate-800 text-white px-3 py-1 rounded hover:bg-slate-700">Accelerate Tax Cuts</button>
+                    </div>
+                </div>
+
+                <!-- Chart 2: Budget Allocation -->
+                <div class="bg-white p-6 rounded-lg shadow-md border-t-4 border-yellow-500 flex flex-col">
+                    <h3 class="text-xl font-bold text-slate-800 mb-2 brand-font">Campaign Budget</h3>
+                    <p class="text-sm text-gray-500 mb-4 h-12">Total transparency regarding where your donations are utilized.</p>
+                    <div class="chart-container flex-grow">
+                        <canvas id="budgetChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Chart 3: Energy & Safety -->
+                <div class="bg-white p-6 rounded-lg shadow-md border-t-4 border-slate-800 flex flex-col">
+                    <h3 class="text-xl font-bold text-slate-800 mb-2 brand-font">Productivity vs. Safety</h3>
+                    <p class="text-sm text-gray-500 mb-4 h-12">The inverse relationship between expensive safety gear and pure profit.</p>
+                    <div class="chart-container flex-grow">
+                        <canvas id="safetyChart"></canvas>
+                    </div>
+                    <div class="mt-4 text-center">
+                        <button id="cut-regulations" class="text-xs bg-red-600 text-white px-3 py-1 rounded hover:bg-red-700">Cut More Regulations</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Policies Text Grid -->
+    <section class="py-16 bg-slate-900 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-yellow-400 brand-font mb-4">The Platform</h2>
+                <div class="w-24 h-1 bg-green-500 mx-auto"></div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <!-- Policy 1 -->
+                <div class="flex items-start">
+                    <div class="flex-shrink-0 text-4xl mr-4">☢️</div>
+                    <div>
+                        <h4 class="text-xl font-bold text-yellow-400 mb-2">Universal Nuclear Adoption</h4>
+                        <p class="text-gray-300">Replacing the sun with a reliable, metered, and billable nuclear alternative. Why get light for free when you can pay for a superior, glowing product?</p>
+                    </div>
+                </div>
+                <!-- Policy 2 -->
+                <div class="flex items-start">
+                    <div class="flex-shrink-0 text-4xl mr-4">📉</div>
+                    <div>
+                        <h4 class="text-xl font-bold text-yellow-400 mb-2">The "Lazy Fare" Economy</h4>
+                        <p class="text-gray-300">A strict Laissez-faire approach. If you are poor, it is simply a lack of character. We will incentivize poverty reduction by making poverty illegal.</p>
+                    </div>
+                </div>
+                <!-- Policy 3 -->
+                <div class="flex items-start">
+                    <div class="flex-shrink-0 text-4xl mr-4">🐕</div>
+                    <div>
+                        <h4 class="text-xl font-bold text-yellow-400 mb-2">National Security</h4>
+                        <p class="text-gray-300">Replacing the Secret Service with a pack of vicious attack dogs. More loyal, less talkative, and significantly cheaper to feed.</p>
+                    </div>
+                </div>
+                <!-- Policy 4 -->
+                <div class="flex items-start">
+                    <div class="flex-shrink-0 text-4xl mr-4">🧪</div>
+                    <div>
+                        <h4 class="text-xl font-bold text-yellow-400 mb-2">Healthcare Reform</h4>
+                        <p class="text-gray-300">Mandatory participation in experimental drug trials for tax credits. It's not just civic duty; it's science.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Donation Section -->
+    <section id="donate" class="py-16 bg-gradient-to-r from-yellow-50 to-yellow-100">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold text-slate-900 mb-6 brand-font">Make a Tribute</h2>
+            <p class="text-gray-700 mb-8">Your donation will go directly towards cementing my power and perhaps buying a new Fabergé egg. Adjust the slider to determine your worth.</p>
+            
+            <div class="bg-white p-8 rounded-xl shadow-lg border border-yellow-300">
+                <div class="mb-6">
+                    <label for="donation-slider" class="block text-sm font-medium text-slate-700 mb-2">Donation Amount ($)</label>
+                    <input type="range" id="donation-slider" min="1000" max="1000000" value="1000" step="1000" class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-green-600">
+                    <div class="mt-4 text-4xl font-bold text-green-700 brand-font">$<span id="donation-value">1,000</span></div>
+                </div>
+                
+                <div id="donor-status" class="mb-8 text-lg font-bold text-slate-500">Tier: Peasant</div>
+                
+                <button onclick="alert('Excellent. Your assets have been seized.')" class="w-full bg-slate-900 text-white font-bold py-4 rounded-lg hover:bg-slate-800 transition shadow-lg">
+                    Confirm Transaction
+                </button>
+                <p class="text-xs text-gray-400 mt-4">Note: Clicking this button constitutes a binding contract to sign over your firstborn.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Voter Compliance Form -->
+    <section id="compliance" class="py-16 bg-slate-800 text-white">
+        <div class="max-w-3xl mx-auto px-4">
+            <div class="bg-slate-900 p-8 rounded-lg border border-slate-700 shadow-2xl">
+                <div class="text-center mb-8">
+                    <h2 class="text-2xl font-bold text-white brand-font">Voter Compliance Registration</h2>
+                    <p class="text-gray-400 text-sm mt-2">Register now to avoid an audit.</p>
+                </div>
+
+                <form id="voter-form" class="space-y-6" onsubmit="event.preventDefault(); handleRegistration();">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-300">Full Name</label>
+                            <input type="text" class="mt-1 block w-full bg-slate-800 border-slate-600 rounded text-white px-4 py-2 focus:ring-yellow-400 focus:border-yellow-400" required>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-300">Annual Income</label>
+                            <select id="income-select" class="mt-1 block w-full bg-slate-800 border-slate-600 rounded text-white px-4 py-2 focus:ring-yellow-400 focus:border-yellow-400">
+                                <option value="low">Less than $10,000,000 (Peasant)</option>
+                                <option value="mid">$10M - $100M (Middle Class)</option>
+                                <option value="high">$100M+ (A Person)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-gray-300">Do you agree that Mr. Burns is invincible?</label>
+                        <div class="mt-2 space-x-4">
+                            <label class="inline-flex items-center">
+                                <input type="radio" name="agree" class="text-yellow-400 focus:ring-yellow-400 bg-slate-800" checked>
+                                <span class="ml-2">Yes</span>
+                            </label>
+                            <label class="inline-flex items-center">
+                                <input type="radio" name="agree" class="text-yellow-400 focus:ring-yellow-400 bg-slate-800">
+                                <span class="ml-2">Absolutely</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3 rounded shadow-lg transition">
+                        Submit Registration
+                    </button>
+                </form>
+
+                <div id="form-result" class="mt-6 hidden p-4 rounded bg-slate-800 border border-yellow-400 text-center">
+                    <p class="text-yellow-400 font-bold text-lg" id="result-text"></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-950 py-12 border-t border-slate-800 text-center">
+        <p class="text-yellow-500 font-bold brand-font text-xl mb-4">BURNS 2024</p>
+        <p class="text-gray-500 text-sm max-w-2xl mx-auto mb-4">
+            Paid for by the Committee to Re-elect the Dark Lord. Not affiliated with The Simpsons, Fox, or any entity with a conscience. 
+            Mr. Burns approves this message because he wrote it.
+        </p>
+        <div class="text-gray-600 text-xs">
+            &copy; 2024 Springfield Nuclear Power Plant. All Rights Reserved.
+        </div>
+    </footer>
+
+    <script>
+        // --- State Management ---
+        const state = {
+            houndsReleased: false,
+            donationAmount: 1000,
+            safetyLevel: 100,
+            productivityLevel: 20
+        };
+
+        // --- Interaction Logic ---
+
+        // 1. Release the Hounds Button
+        const houndsBtn = document.getElementById('hounds-btn');
+        const houndsStatus = document.getElementById('hounds-status');
+
+        houndsBtn.addEventListener('click', () => {
+            state.houndsReleased = true;
+            houndsStatus.classList.remove('opacity-0');
+            houndsBtn.textContent = "Hounds Released!";
+            houndsBtn.classList.add('bg-red-900', 'border-red-900', 'text-white');
+            
+            // Play fake sound effect visual cue
+            setTimeout(() => {
+                houndsStatus.textContent = "Bark! Bark! Snarl!";
+            }, 1000);
+            setTimeout(() => {
+                houndsStatus.classList.add('opacity-0');
+                houndsBtn.textContent = "Release the Hounds";
+                houndsBtn.classList.remove('bg-red-900', 'border-red-900', 'text-white');
+                state.houndsReleased = false;
+            }, 4000);
+        });
+
+        // 2. Donation Slider
+        const slider = document.getElementById('donation-slider');
+        const valueDisplay = document.getElementById('donation-value');
+        const statusDisplay = document.getElementById('donor-status');
+
+        slider.addEventListener('input', (e) => {
+            const val = parseInt(e.target.value);
+            valueDisplay.textContent = val.toLocaleString();
+            
+            if (val < 10000) {
+                statusDisplay.textContent = "Tier: Peasant";
+                statusDisplay.className = "mb-8 text-lg font-bold text-gray-500";
+            } else if (val < 100000) {
+                statusDisplay.textContent = "Tier: Sycophant";
+                statusDisplay.className = "mb-8 text-lg font-bold text-blue-500";
+            } else if (val < 500000) {
+                statusDisplay.textContent = "Tier: Junior Executive";
+                statusDisplay.className = "mb-8 text-lg font-bold text-green-500";
+            } else {
+                statusDisplay.textContent = "Tier: Montgomery's Favorite";
+                statusDisplay.className = "mb-8 text-lg font-bold text-yellow-500 drop-shadow-md";
+            }
+        });
+
+        // 3. Voter Registration Form
+        function handleRegistration() {
+            const income = document.getElementById('income-select').value;
+            const resultDiv = document.getElementById('form-result');
+            const resultText = document.getElementById('result-text');
+            
+            resultDiv.classList.remove('hidden');
+            
+            if (income === 'low') {
+                resultDiv.classList.add('bg-red-900/50');
+                resultText.textContent = "Error: Insufficient funds to vote. Please try again when you are wealthier.";
+            } else {
+                resultDiv.classList.remove('bg-red-900/50');
+                resultDiv.classList.add('bg-green-900/50');
+                resultText.textContent = "Success! You have been registered. A limo has been dispatched to collect your ballot.";
+            }
+        }
+
+        // --- Charts Implementation (Chart.js) ---
+
+        // Chart 1: Trickle Down Economics (Line)
+        const ctxTrickle = document.getElementById('trickleChart').getContext('2d');
+        const trickleChart = new Chart(ctxTrickle, {
+            type: 'line',
+            data: {
+                labels: ['2024', '2030', '2040', '2050', '2100', '3000'],
+                datasets: [
+                    {
+                        label: 'Wealth of Top 1%',
+                        data: [100, 200, 450, 900, 5000, 99999],
+                        borderColor: '#FACC15', // Gold
+                        backgroundColor: 'rgba(250, 204, 21, 0.2)',
+                        tension: 0.4,
+                        fill: true
+                    },
+                    {
+                        label: 'Trickle Down to Poor',
+                        data: [5, 4, 3, 2, 1, 0.0001],
+                        borderColor: '#94a3b8', // Slate 400
+                        borderDash: [5, 5],
+                        tension: 0.1
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { position: 'bottom' },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                return context.dataset.label + ': ' + context.raw + ' units';
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    y: { beginAtZero: true, display: false }
+                }
+            }
+        });
+
+        // Update Logic for Trickle Chart
+        document.getElementById('accelerate-economy').addEventListener('click', () => {
+            trickleChart.data.datasets[0].data = trickleChart.data.datasets[0].data.map(val => val * 1.5);
+            trickleChart.data.datasets[1].data = trickleChart.data.datasets[1].data.map(val => val * 0.5);
+            trickleChart.update();
+        });
+
+
+        // Chart 2: Budget Allocation (Doughnut)
+        const ctxBudget = document.getElementById('budgetChart').getContext('2d');
+        new Chart(ctxBudget, {
+            type: 'doughnut',
+            data: {
+                labels: ['Hounds Maintenance', 'Trap Doors', 'Nuclear Waste Disposal', 'Education', 'Executive Bonuses'],
+                datasets: [{
+                    data: [40, 20, 5, 1, 34],
+                    backgroundColor: [
+                        '#7f1d1d', // Red 900
+                        '#0f172a', // Slate 900
+                        '#22c55e', // Green 500
+                        '#cbd5e1', // Slate 300
+                        '#fbbf24'  // Amber 400
+                    ],
+                    borderWidth: 0
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { position: 'right' }
+                }
+            }
+        });
+
+
+        // Chart 3: Safety vs Productivity (Bar)
+        const ctxSafety = document.getElementById('safetyChart').getContext('2d');
+        const safetyChart = new Chart(ctxSafety, {
+            type: 'bar',
+            data: {
+                labels: ['Q1', 'Q2', 'Q3', 'Q4'],
+                datasets: [
+                    {
+                        label: 'Safety Regulations',
+                        data: [80, 60, 40, 20],
+                        backgroundColor: '#ef4444', // Red 500
+                        order: 2
+                    },
+                    {
+                        label: 'Plant Output',
+                        data: [30, 50, 70, 95],
+                        backgroundColor: '#15803d', // Green 700
+                        type: 'line',
+                        borderColor: '#15803d',
+                        borderWidth: 3,
+                        tension: 0.3,
+                        order: 1
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { position: 'bottom' }
+                },
+                scales: {
+                    y: { beginAtZero: true }
+                }
+            }
+        });
+
+        // Update Logic for Safety Chart
+        document.getElementById('cut-regulations').addEventListener('click', () => {
+            // Lower safety, raise output
+            safetyChart.data.datasets[0].data = safetyChart.data.datasets[0].data.map(val => Math.max(0, val - 10));
+            safetyChart.data.datasets[1].data = safetyChart.data.datasets[1].data.map(val => val + 15);
+            safetyChart.update();
+        });
+
+    </script>
+</body>
+</html>
