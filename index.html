@@ -3,499 +3,559 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Burns for President 2024 | Excellent.</title>
+    <title>Burns for President | Restoring Greatness</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Lato:wght@300;400;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap');
 
         :root {
-            --burns-green: #006644;
-            --burns-gold: #D4AF37;
-            --burns-dark: #1a1a1a;
-            --burns-light: #f4f4f4;
+            --primary-gold: #D4AF37;
+            --primary-green: #0a2f23;
+            --glass-bg: rgba(10, 20, 15, 0.75);
+            --glass-border: rgba(212, 175, 55, 0.2);
+            --text-main: #f5f5f5;
         }
 
         body {
             font-family: 'Lato', sans-serif;
-            background-color: var(--burns-light);
-            color: var(--burns-dark);
+            background-color: #050505;
+            color: var(--text-main);
             overflow-x: hidden;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
 
-        h1, h2, h3, h4 {
+        /* Dynamic Background */
+        .bg-layer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            background: 
+                radial-gradient(circle at 15% 50%, rgba(20, 50, 40, 0.4), transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(212, 175, 55, 0.15), transparent 25%);
+        }
+        
+        .bg-image {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -3;
+            background-image: url('https://image.pollinations.ai/prompt/dark%20moody%20abstract%20background%20with%20subtle%20architectural%20lines%20and%20golden%20light%20rays%20cinematic%20lighting?width=1920&height=1080&nologo=true');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.4;
+            filter: blur(2px);
+        }
+
+        h1, h2, h3, h4, .serif {
             font-family: 'Playfair Display', serif;
         }
 
-        .text-gold { color: var(--burns-gold); }
-        .bg-gold { background-color: var(--burns-gold); }
-        .text-green { color: var(--burns-green); }
-        .bg-green { background-color: var(--burns-green); }
+        /* Glassmorphism Utilities */
+        .glass {
+            background: var(--glass-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+        }
 
-        .btn-primary {
-            background-color: var(--burns-gold);
-            color: var(--burns-dark);
-            padding: 1rem 2rem;
-            font-weight: 700;
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .glass-card:hover {
+            background: rgba(255, 255, 255, 0.07);
+            border-color: var(--primary-gold);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+        }
+
+        /* Navigation */
+        nav {
+            transition: all 0.3s ease;
+        }
+        
+        nav.scrolled {
+            background: rgba(5, 5, 5, 0.9);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        .nav-link {
+            position: relative;
+            color: rgba(255,255,255,0.7);
             text-transform: uppercase;
             letter-spacing: 1px;
-            transition: all 0.3s ease;
-            border: 2px solid var(--burns-gold);
+            font-size: 0.85rem;
+            font-weight: 700;
+            transition: color 0.3s;
             cursor: pointer;
         }
 
-        .btn-primary:hover {
-            background-color: transparent;
-            color: var(--burns-gold);
+        .nav-link:hover, .nav-link.active {
+            color: var(--primary-gold);
         }
 
-        .btn-secondary {
-            background-color: transparent;
-            color: white;
-            padding: 1rem 2rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            border: 2px solid white;
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-
-        .btn-secondary:hover {
-            background-color: white;
-            color: var(--burns-dark);
-        }
-
-        .hero-bg {
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://image.pollinations.ai/prompt/grandiose%20presidential%20stage%20with%20golden%20curtains%20and%20nuclear%20power%20plant%20silhouette%20in%20background%20dramatic%20lighting?width=1920&height=1080&nologo=true');
-            background-size: cover;
-            background-position: center;
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            position: relative;
-        }
-
-        .floating-burns {
-            animation: float 6s ease-in-out infinite;
-            filter: drop-shadow(0 0 20px rgba(212, 175, 55, 0.5));
-        }
-
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-            100% { transform: translateY(0px); }
-        }
-
-        .policy-card {
-            background: white;
-            border-top: 5px solid var(--burns-green);
-            transition: transform 0.3s ease;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        }
-
-        .policy-card:hover {
-            transform: translateY(-10px);
-            border-top-color: var(--burns-gold);
-        }
-
-        .marquee {
-            background-color: var(--burns-green);
-            color: white;
-            padding: 10px 0;
-            overflow: hidden;
-            white-space: nowrap;
-        }
-
-        .marquee-content {
-            display: inline-block;
-            animation: marquee 20s linear infinite;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        @keyframes marquee {
-            0% { transform: translateX(100%); }
-            100% { transform: translateX(-100%); }
-        }
-
-        .section-title {
-            position: relative;
-            display: inline-block;
-            margin-bottom: 3rem;
-        }
-
-        .section-title::after {
+        .nav-link::after {
             content: '';
             position: absolute;
-            width: 60%;
-            height: 3px;
-            background-color: var(--burns-gold);
-            bottom: -10px;
-            left: 20%;
-        }
-
-        /* Modal Styles */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1000;
+            width: 0;
+            height: 1px;
+            bottom: -4px;
             left: 0;
-            top: 0;
+            background-color: var(--primary-gold);
+            transition: width 0.3s;
+        }
+
+        .nav-link:hover::after, .nav-link.active::after {
             width: 100%;
-            height: 100%;
-            background-color: rgba(0,0,0,0.8);
-            backdrop-filter: blur(5px);
         }
 
-        .modal-content {
-            background-color: white;
-            margin: 10% auto;
-            padding: 2rem;
-            border: 2px solid var(--burns-gold);
-            width: 90%;
-            max-width: 500px;
-            position: relative;
-            animation: slideDown 0.4s ease;
-        }
-
-        @keyframes slideDown {
-            from { transform: translateY(-50px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
-
-        .close {
-            position: absolute;
-            top: 10px;
-            right: 20px;
-            font-size: 28px;
-            font-weight: bold;
+        /* Buttons */
+        .btn-gold {
+            background: linear-gradient(135deg, var(--primary-gold) 0%, #8a7020 100%);
+            color: #000;
+            padding: 0.8rem 2rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: none;
             cursor: pointer;
-            color: var(--burns-green);
+            transition: all 0.3s;
+            clip-path: polygon(10% 0, 100% 0, 100% 80%, 90% 100%, 0 100%, 0 20%);
         }
 
-        input, select, textarea {
-            width: 100%;
-            padding: 12px;
-            margin: 8px 0;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
+        .btn-gold:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+            filter: brightness(1.1);
         }
 
-        input:focus, select:focus, textarea:focus {
-            outline: none;
-            border-color: var(--burns-gold);
-            box-shadow: 0 0 5px rgba(212, 175, 55, 0.5);
-        }
-
-        .donation-tier {
-            border: 1px solid #ddd;
-            padding: 1rem;
-            text-align: center;
+        .btn-outline {
+            background: transparent;
+            color: var(--primary-gold);
+            padding: 0.8rem 2rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: 1px solid var(--primary-gold);
             cursor: pointer;
-            transition: all 0.2s;
+            transition: all 0.3s;
         }
 
-        .donation-tier:hover, .donation-tier.selected {
-            background-color: var(--burns-green);
+        .btn-outline:hover {
+            background: rgba(212, 175, 55, 0.1);
+        }
+
+        /* Page Transitions */
+        .page-section {
+            display: none;
+            animation: fadeIn 0.6s ease-out;
+            min-height: 80vh;
+            padding-top: 100px;
+            padding-bottom: 60px;
+        }
+
+        .page-section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Forms */
+        .form-input {
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             color: white;
-            border-color: var(--burns-green);
+            padding: 1rem;
+            width: 100%;
+            transition: all 0.3s;
+            font-family: 'Lato', sans-serif;
         }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--primary-gold);
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        /* Floating Animation */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+        .floating { animation: float 6s ease-in-out infinite; }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #0a0a0a; }
+        ::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--primary-gold); }
 
     </style>
 </head>
 <body>
 
+    <!-- Background Elements -->
+    <div class="bg-image"></div>
+    <div class="bg-layer"></div>
+
     <!-- Navigation -->
-    <nav class="bg-white shadow-lg fixed w-full z-50">
+    <nav class="fixed w-full z-50 py-6" id="navbar">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-20">
-                <div class="flex items-center">
-                    <span class="text-3xl font-black text-green tracking-widest">BURNS<span class="text-gold">2024</span></span>
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-3 cursor-pointer" onclick="navigateTo('home')">
+                    <div class="w-10 h-10 bg-gold rounded-sm flex items-center justify-center text-black font-serif font-bold text-xl">B</div>
+                    <span class="text-2xl font-serif font-bold text-white tracking-widest">BURNS<span class="text-gold">2024</span></span>
                 </div>
-                <div class="hidden md:flex items-center space-x-8">
-                    <a href="#agenda" class="text-gray-800 hover:text-green font-bold uppercase text-sm tracking-wider">The Agenda</a>
-                    <a href="#about" class="text-gray-800 hover:text-green font-bold uppercase text-sm tracking-wider">About C.M.</a>
-                    <a href="#register" class="text-gray-800 hover:text-green font-bold uppercase text-sm tracking-wider">Register</a>
-                    <button onclick="openModal('donateModal')" class="bg-green text-white px-6 py-2 rounded-full font-bold uppercase hover:bg-yellow-600 transition duration-300">Donate</button>
+                
+                <div class="hidden md:flex space-x-8">
+                    <button onclick="navigateTo('home')" class="nav-link active" id="link-home">Home</button>
+                    <button onclick="navigateTo('agenda')" class="nav-link" id="link-agenda">Agenda</button>
+                    <button onclick="navigateTo('about')" class="nav-link" id="link-about">About</button>
+                    <button onclick="navigateTo('involved')" class="nav-link" id="link-involved">Get Involved</button>
                 </div>
-                <div class="md:hidden flex items-center">
-                    <button class="text-gray-800 focus:outline-none">
-                        <i class="ri-menu-3-line text-2xl"></i>
-                    </button>
-                </div>
+
+                <button onclick="navigateTo('involved')" class="btn-gold hidden md:block">Donate Now</button>
+                
+                <!-- Mobile Menu Button -->
+                <button class="md:hidden text-white" onclick="toggleMobileMenu()">
+                    <i class="ri-menu-line text-2xl"></i>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden glass mt-4 mx-4 rounded-lg p-4 absolute top-20 left-4 right-4">
+            <div class="flex flex-col space-y-4">
+                <button onclick="navigateTo('home'); toggleMobileMenu()" class="text-left text-white hover:text-gold">Home</button>
+                <button onclick="navigateTo('agenda'); toggleMobileMenu()" class="text-left text-white hover:text-gold">Agenda</button>
+                <button onclick="navigateTo('about'); toggleMobileMenu()" class="text-left text-white hover:text-gold">About</button>
+                <button onclick="navigateTo('involved'); toggleMobileMenu()" class="text-left text-white hover:text-gold">Get Involved</button>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <header class="hero-bg">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10">
-            <div class="grid md:grid-cols-2 gap-12 items-center">
-                <div class="text-white space-y-6">
-                    <h1 class="text-5xl md:text-7xl font-black leading-tight">
-                        RELEASE THE <span class="text-gold">HOUNDS</span><br>
-                        OF PROGRESS.
+    <!-- PAGE: HOME -->
+    <section id="home" class="page-section active">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center">
+            <div class="grid md:grid-cols-2 gap-12 items-center w-full">
+                <div class="space-y-8 order-2 md:order-1">
+                    <div class="inline-block px-4 py-1 border border-gold/50 rounded-full bg-gold/10">
+                        <span class="text-gold text-xs font-bold uppercase tracking-widest">The Campaign for Prosperity</span>
+                    </div>
+                    <h1 class="text-5xl md:text-7xl font-bold leading-tight">
+                        A Future Built on <span class="text-transparent bg-clip-text bg-gradient-to-r from-gold to-yellow-200">Excellence</span>
                     </h1>
-                    <p class="text-xl md:text-2xl font-light opacity-90">
-                        "Excellent." <br>
-                        It's time to put the power back where it belongs: In the hands of those who own the plant.
+                    <p class="text-lg text-gray-300 font-light leading-relaxed max-w-lg">
+                        It is time to return power to those who understand it. Join C. Montgomery Burns in restoring dignity, profitability, and order to the United States of America.
                     </p>
-                    <div class="flex flex-col sm:flex-row gap-4 pt-4">
-                        <button onclick="openModal('registerModal')" class="btn-primary">Register to Vote</button>
-                        <button onclick="openModal('donateModal')" class="btn-secondary">Contribute Funds</button>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <button onclick="navigateTo('involved')" class="btn-gold">Join the Movement</button>
+                        <button onclick="navigateTo('agenda')" class="btn-outline">View Policies</button>
+                    </div>
+                    
+                    <div class="pt-8 flex items-center space-x-4 text-sm text-gray-400">
+                        <div class="flex -space-x-2">
+                            <div class="w-8 h-8 rounded-full bg-gray-700 border border-black"></div>
+                            <div class="w-8 h-8 rounded-full bg-gray-600 border border-black"></div>
+                            <div class="w-8 h-8 rounded-full bg-gray-500 border border-black"></div>
+                        </div>
+                        <p>Joined by 10,000+ patriots today</p>
                     </div>
                 </div>
-                <div class="flex justify-center md:justify-end">
+                <div class="order-1 md:order-2 flex justify-center relative">
+                    <div class="absolute inset-0 bg-gold blur-[120px] opacity-20 rounded-full"></div>
                     <!-- Using the user provided image URL -->
-                    <img src="https://i.imgur.com/kX3sY6l.png" alt="Mr. Burns" class="floating-burns w-full max-w-md object-contain">
+                    <img src="https://i.imgur.com/kX3sY6l.png" alt="Mr. Burns" class="floating w-full max-w-md object-contain relative z-10 drop-shadow-2xl">
                 </div>
             </div>
         </div>
-        <div class="absolute bottom-0 w-full h-24 bg-gradient-to-t from-gray-100 to-transparent"></div>
-    </header>
 
-    <!-- Marquee -->
-    <div class="marquee">
-        <div class="marquee-content">
-            VOTE BURNS FOR A BRIGHTER (AND MORE PROFITABLE) FUTURE +++ NO MORE UNIONS +++ NUCLEAR ENERGY IS THE ONLY ENERGY +++ SMITHERS KNOWS BEST +++ VOTE BURNS +++
-        </div>
-    </div>
-
-    <!-- The Agenda Section -->
-    <section id="agenda" class="py-20 bg-gray-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center">
-                <h2 class="section-title text-4xl md:text-5xl font-bold text-gray-900">The Burns Agenda</h2>
-                <p class="text-lg text-gray-600 max-w-2xl mx-auto">Policies designed to streamline efficiency and maximize shareholder value for the American people.</p>
-            </div>
-
-            <div class="grid md:grid-cols-3 gap-8 mt-16">
-                <!-- Policy 1 -->
-                <div class="policy-card p-8 rounded-lg">
-                    <div class="w-16 h-16 bg-green/10 rounded-full flex items-center justify-center mb-6">
-                        <i class="ri-atom-line text-3xl text-green"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-4">The Nuclear Renaissance</h3>
-                    <p class="text-gray-600 mb-6">Why rely on "renewables" when we have the atom? I propose removing all safety regulations to lower energy costs by 400%. Glowing children are a small price to pay for cheap electricity.</p>
-                    <a href="#" class="text-green font-bold uppercase text-sm hover:underline">Read Proposal &rarr;</a>
-                </div>
-
-                <!-- Policy 2 -->
-                <div class="policy-card p-8 rounded-lg">
-                    <div class="w-16 h-16 bg-green/10 rounded-full flex items-center justify-center mb-6">
-                        <i class="ri-money-dollar-circle-line text-3xl text-green"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-4">Abolish The Weekend</h3>
-                    <p class="text-gray-600 mb-6">Saturday and Sunday are merely opportunities for lost productivity. My administration will implement a 7-day work week to ensure America stays competitive against global markets.</p>
-                    <a href="#" class="text-green font-bold uppercase text-sm hover:underline">Read Proposal &rarr;</a>
-                </div>
-
-                <!-- Policy 3 -->
-                <div class="policy-card p-8 rounded-lg">
-                    <div class="w-16 h-16 bg-green/10 rounded-full flex items-center justify-center mb-6">
-                        <i class="ri-shield-keyhole-line text-3xl text-green"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-4">Deregulation Now</h3>
-                    <p class="text-gray-600 mb-6">Rules are for the little people. I will dismantle the EPA, the FDA, and the Department of Education. Let the free market decide if water is safe to drink.</p>
-                    <a href="#" class="text-green font-bold uppercase text-sm hover:underline">Read Proposal &rarr;</a>
+        <!-- Latest News Ticker -->
+        <div class="w-full bg-black/50 border-y border-white/5 py-3 mt-20 backdrop-blur-sm">
+            <div class="max-w-7xl mx-auto px-4 overflow-hidden">
+                <div class="whitespace-nowrap animate-marquee flex space-x-8 text-sm font-medium text-gray-400">
+                    <span class="flex items-center"><i class="ri-radio-line text-gold mr-2"></i> BURNS LEADS IN NEW POLLING DATA</span>
+                    <span class="flex items-center"><i class="ri-radio-line text-gold mr-2"></i> "EXCELLENT" SAYS BURNS ON NEW TAX PROPOSAL</span>
+                    <span class="flex items-center"><i class="ri-radio-line text-gold mr-2"></i> SMITHERS ANNOUNCES NATIONWIDE TOUR</span>
+                    <span class="flex items-center"><i class="ri-radio-line text-gold mr-2"></i> VOTE BURNS FOR A BRIGHTER TOMORROW</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- About Section -->
-    <section id="about" class="py-20 bg-white">
+    <!-- PAGE: AGENDA -->
+    <section id="agenda" class="page-section">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid md:grid-cols-2 gap-12 items-center">
-                <div class="order-2 md:order-1 relative">
-                    <div class="absolute -top-4 -left-4 w-full h-full border-4 border-gold z-0"></div>
-                    <img src="https://image.pollinations.ai/prompt/oil%20painting%20portrait%20of%20an%20elderly%20billionaire%20industrialist%20looking%20scheming%20and%20powerful%20dark%20moody%20lighting?width=600&height=800&nologo=true" alt="Portrait" class="relative z-10 w-full shadow-2xl grayscale hover:grayscale-0 transition duration-500">
-                </div>
-                <div class="order-1 md:order-2 space-y-6">
-                    <h2 class="text-4xl font-bold">Who Is C. Montgomery Burns?</h2>
-                    <p class="text-lg text-gray-700 leading-relaxed">
-                        Born in the late 19th century, I have seen empires rise and fall. I have survived wars, depressions, and several attempts on my life by union organizers. 
-                    </p>
-                    <p class="text-lg text-gray-700 leading-relaxed">
-                        I am not a politician. I am a <strong>job creator</strong>. While others talk about "change," I offer stability. The stability of a paycheck (however small) and the security of knowing exactly who is in charge.
-                    </p>
-                    <blockquote class="border-l-4 border-gold pl-6 italic text-xl text-gray-800 font-serif">
-                        "I am so evil, even my own shadow refuses to follow me."
-                    </blockquote>
-                    <div class="pt-4">
-                        <button class="btn-primary">Read Full Biography</button>
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4">The Burns Agenda</h2>
+                <div class="w-24 h-1 bg-gold mx-auto mb-6"></div>
+                <p class="text-gray-400 max-w-2xl mx-auto">Concrete plans to secure our nation's economic dominance and energy independence.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="glass-card p-8 rounded-xl relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 p-6 opacity-5 group-hover:opacity-10 transition duration-500">
+                        <i class="ri-atom-line text-9xl text-gold"></i>
                     </div>
+                    <div class="w-14 h-14 bg-gold/10 rounded-full flex items-center justify-center mb-6 border border-gold/30">
+                        <i class="ri-atom-line text-2xl text-gold"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-white">Energy Independence</h3>
+                    <p class="text-gray-400 mb-6 font-light leading-relaxed">
+                        We will unleash the full potential of nuclear energy. By streamlining regulations, we can provide cheap, abundant power to every American home and factory.
+                    </p>
+                    <ul class="space-y-2 text-sm text-gray-300">
+                        <li class="flex items-center"><i class="ri-check-line text-gold mr-2"></i> Deregulate Plant Safety</li>
+                        <li class="flex items-center"><i class="ri-check-line text-gold mr-2"></i> Subsidize Uranium Mining</li>
+                        <li class="flex items-center"><i class="ri-check-line text-gold mr-2"></i> Eliminate Green Energy Mandates</li>
+                    </ul>
                 </div>
-                <div class="md:order-2"></div>
+
+                <!-- Card 2 -->
+                <div class="glass-card p-8 rounded-xl relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 p-6 opacity-5 group-hover:opacity-10 transition duration-500">
+                        <i class="ri-money-dollar-circle-line text-9xl text-gold"></i>
+                    </div>
+                    <div class="w-14 h-14 bg-gold/10 rounded-full flex items-center justify-center mb-6 border border-gold/30">
+                        <i class="ri-money-dollar-circle-line text-2xl text-gold"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-white">Economic Freedom</h3>
+                    <p class="text-gray-400 mb-6 font-light leading-relaxed">
+                        Taxes are a burden on job creators. My administration will slash corporate taxes to stimulate growth and encourage hiring.
+                    </p>
+                    <ul class="space-y-2 text-sm text-gray-300">
+                        <li class="flex items-center"><i class="ri-check-line text-gold mr-2"></i> Flat Tax Implementation</li>
+                        <li class="flex items-center"><i class="ri-check-line text-gold mr-2"></i> Abolish Estate Tax</li>
+                        <li class="flex items-center"><i class="ri-check-line text-gold mr-2"></i> Incentivize Weekend Work</li>
+                    </ul>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="glass-card p-8 rounded-xl relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 p-6 opacity-5 group-hover:opacity-10 transition duration-500">
+                        <i class="ri-shield-keyhole-line text-9xl text-gold"></i>
+                    </div>
+                    <div class="w-14 h-14 bg-gold/10 rounded-full flex items-center justify-center mb-6 border border-gold/30">
+                        <i class="ri-shield-keyhole-line text-2xl text-gold"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-white">National Security</h3>
+                    <p class="text-gray-400 mb-6 font-light leading-relaxed">
+                        A strong nation requires strong borders and a powerful military. We will ensure no foreign entity threatens our sovereignty.
+                    </p>
+                    <ul class="space-y-2 text-sm text-gray-300">
+                        <li class="flex items-center"><i class="ri-check-line text-gold mr-2"></i> Expand Defense Budget</li>
+                        <li class="flex items-center"><i class="ri-check-line text-gold mr-2"></i> Strict Immigration Control</li>
+                        <li class="flex items-center"><i class="ri-check-line text-gold mr-2"></i> "Release the Hounds" Protocol</li>
+                    </ul>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Call to Action / Registration -->
-    <section id="register" class="py-20 bg-green text-white relative overflow-hidden">
-        <!-- Decorative BG elements -->
-        <div class="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 bg-gold opacity-10 rounded-full blur-3xl"></div>
-        <div class="absolute bottom-0 left-0 -ml-20 -mb-20 w-96 h-96 bg-black opacity-20 rounded-full blur-3xl"></div>
+    <!-- PAGE: ABOUT -->
+    <section id="about" class="page-section">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="glass p-8 md:p-16 rounded-2xl border border-white/5">
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div class="order-2 md:order-1 space-y-6">
+                        <h2 class="text-4xl font-bold">The Man, The Myth, The President</h2>
+                        <p class="text-gray-300 text-lg font-light leading-relaxed">
+                            Charles Montgomery Burns is not a career politician. He is a captain of industry who has built an empire from the ground up. With over a century of experience in leadership, he understands what it takes to keep America running.
+                        </p>
+                        <p class="text-gray-300 text-lg font-light leading-relaxed">
+                            While others promise change, Burns promises stability. The stability of a paycheck, the security of a powered grid, and the certainty of strong leadership.
+                        </p>
+                        <div class="pt-4">
+                            <img src="https://upload.wikimedia.org/wikipedia/en/thumb/0/02/Mr._Burns.png/220px-Mr._Burns.png" alt="Signature" class="h-12 opacity-70 invert">
+                        </div>
+                    </div>
+                    <div class="order-1 md:order-2 flex justify-center">
+                        <div class="relative">
+                            <div class="absolute inset-0 border-2 border-gold/30 rounded-full animate-spin-slow" style="animation-duration: 30s;"></div>
+                            <img src="https://image.pollinations.ai/prompt/portrait%20of%20an%20elderly%20wealthy%20man%20in%20a%20suit%20looking%20distinguished%20and%20powerful%20cinematic%20lighting?width=500&height=500&nologo=true" alt="Burns Portrait" class="w-64 h-64 md:w-80 md:h-80 object-cover rounded-full border-4 border-black shadow-2xl relative z-10">
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-        <div class="max-w-4xl mx-auto px-4 relative z-10 text-center">
-            <h2 class="text-4xl md:text-5xl font-bold mb-8">Secure Your Future</h2>
-            <p class="text-xl mb-12 opacity-90">Don't let the opposition steal your voice. Register today and ensure your vote counts towards a more profitable America.</p>
-            
-            <div class="bg-white text-gray-900 p-8 rounded-lg shadow-2xl max-w-lg mx-auto">
-                <h3 class="text-2xl font-bold mb-6 text-green">Voter Registration</h3>
-                <form onsubmit="event.preventDefault(); alert('Registration submitted! Smithers will be in touch.');">
-                    <input type="text" placeholder="Full Name" required class="bg-gray-100 border-none">
-                    <input type="email" placeholder="Email Address" required class="bg-gray-100 border-none">
-                    <input type="text" placeholder="Zip Code" required class="bg-gray-100 border-none">
-                    <button type="submit" class="w-full bg-gold text-black font-bold py-4 mt-4 hover:bg-yellow-500 transition uppercase tracking-widest">
-                        Register Now
-                    </button>
-                </form>
-                <p class="text-xs text-gray-500 mt-4">By registering, you agree to receive unsolicited telegrams from Mr. Burns.</p>
+            <!-- Stats Section -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mt-16 text-center">
+                <div class="glass-card p-6 rounded-lg">
+                    <div class="text-4xl font-bold text-gold mb-2">100+</div>
+                    <div class="text-sm text-gray-400 uppercase tracking-widest">Years Experience</div>
+                </div>
+                <div class="glass-card p-6 rounded-lg">
+                    <div class="text-4xl font-bold text-gold mb-2">1</div>
+                    <div class="text-sm text-gray-400 uppercase tracking-widest">Nuclear Plant</div>
+                </div>
+                <div class="glass-card p-6 rounded-lg">
+                    <div class="text-4xl font-bold text-gold mb-2">∞</div>
+                    <div class="text-sm text-gray-400 uppercase tracking-widest">Dollars Earned</div>
+                </div>
+                <div class="glass-card p-6 rounded-lg">
+                    <div class="text-4xl font-bold text-gold mb-2">0</div>
+                    <div class="text-sm text-gray-400 uppercase tracking-widest">Regrets</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PAGE: GET INVOLVED -->
+    <section id="involved" class="page-section">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 gap-12">
+                <!-- Donation Column -->
+                <div class="glass p-8 rounded-2xl border-t-4 border-gold">
+                    <h2 class="text-3xl font-bold mb-6">Fuel The Campaign</h2>
+                    <p class="text-gray-400 mb-8">Your contribution ensures our message reaches every corner of the nation. Every dollar counts towards victory.</p>
+                    
+                    <div class="grid grid-cols-3 gap-4 mb-6">
+                        <button onclick="selectAmount(50)" class="donation-btn glass-card p-4 rounded hover:bg-gold/20 border border-white/10">$50</button>
+                        <button onclick="selectAmount(100)" class="donation-btn glass-card p-4 rounded hover:bg-gold/20 border border-white/10">$100</button>
+                        <button onclick="selectAmount(500)" class="donation-btn glass-card p-4 rounded hover:bg-gold/20 border border-white/10">$500</button>
+                    </div>
+                    
+                    <form onsubmit="event.preventDefault(); alert('Thank you for your generous contribution! Smithers has recorded it.');">
+                        <input type="number" id="donationAmount" placeholder="Custom Amount" class="form-input mb-6 rounded">
+                        <input type="text" placeholder="Card Number" class="form-input mb-4 rounded">
+                        <div class="grid grid-cols-2 gap-4 mb-6">
+                            <input type="text" placeholder="MM/YY" class="form-input rounded">
+                            <input type="text" placeholder="CVC" class="form-input rounded">
+                        </div>
+                        <button type="submit" class="w-full btn-gold">Contribute Now</button>
+                    </form>
+                </div>
+
+                <!-- Registration Column -->
+                <div class="glass p-8 rounded-2xl border-t-4 border-white/20">
+                    <h2 class="text-3xl font-bold mb-6">Register to Vote</h2>
+                    <p class="text-gray-400 mb-8">Ensure your voice is heard. Register today to vote for a stronger, more profitable America.</p>
+                    
+                    <form onsubmit="event.preventDefault(); alert('Registration Successful! Welcome to the future.');">
+                        <div class="grid grid-cols-2 gap-4 mb-4">
+                            <input type="text" placeholder="First Name" class="form-input rounded" required>
+                            <input type="text" placeholder="Last Name" class="form-input rounded" required>
+                        </div>
+                        <input type="email" placeholder="Email Address" class="form-input mb-4 rounded" required>
+                        <input type="text" placeholder="Zip Code" class="form-input mb-6 rounded" required>
+                        
+                        <div class="flex items-start mb-6">
+                            <input type="checkbox" id="terms" class="mt-1 mr-2 accent-gold">
+                            <label for="terms" class="text-sm text-gray-400">I agree to receive campaign updates and occasional telegrams from Mr. Burns.</label>
+                        </div>
+                        
+                        <button type="submit" class="w-full btn-outline">Register Now</button>
+                    </form>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-black text-white py-12 border-t-4 border-gold">
+    <footer class="mt-auto border-t border-white/10 bg-black/80 backdrop-blur-md py-12">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid md:grid-cols-4 gap-8">
-                <div>
-                    <h4 class="text-2xl font-bold text-gold mb-4">BURNS 2024</h4>
-                    <p class="text-gray-400 text-sm">Paid for by Burns for President Committee. Not authorized by any candidate or candidate's committee.</p>
+            <div class="grid md:grid-cols-4 gap-8 mb-8">
+                <div class="col-span-1 md:col-span-2">
+                    <span class="text-2xl font-serif font-bold text-white tracking-widest">BURNS<span class="text-gold">2024</span></span>
+                    <p class="mt-4 text-gray-500 text-sm max-w-md">
+                        Paid for by Burns for President Committee. Not authorized by any candidate or candidate's committee.
+                        <br>
+                        "I am so evil, even my own shadow refuses to follow me."
+                    </p>
                 </div>
                 <div>
-                    <h5 class="font-bold uppercase tracking-wider mb-4 text-gold">Quick Links</h5>
-                    <ul class="space-y-2 text-gray-400 text-sm">
-                        <li><a href="#" class="hover:text-white">Home</a></li>
-                        <li><a href="#agenda" class="hover:text-white">The Agenda</a></li>
-                        <li><a href="#about" class="hover:text-white">About</a></li>
-                        <li><a href="#" class="hover:text-white">Press</a></li>
-                    </ul>
+                    <h4 class="text-gold font-bold uppercase tracking-widest text-xs mb-4">Contact</h4>
+                    <p class="text-gray-400 text-sm">Springfield Nuclear Power Plant</p>
+                    <p class="text-gray-400 text-sm">100 Industrial Way</p>
+                    <p class="text-gray-400 text-sm">Springfield, USA</p>
                 </div>
                 <div>
-                    <h5 class="font-bold uppercase tracking-wider mb-4 text-gold">Contact</h5>
-                    <ul class="space-y-2 text-gray-400 text-sm">
-                        <li>Springfield Nuclear Power Plant</li>
-                        <li>100 Industrial Way</li>
-                        <li>Springfield, USA</li>
-                        <li>office@burns2024.com</li>
-                    </ul>
-                </div>
-                <div>
-                    <h5 class="font-bold uppercase tracking-wider mb-4 text-gold">Social</h5>
+                    <h4 class="text-gold font-bold uppercase tracking-widest text-xs mb-4">Social</h4>
                     <div class="flex space-x-4">
-                        <a href="#" class="text-gray-400 hover:text-gold text-2xl"><i class="ri-twitter-x-line"></i></a>
-                        <a href="#" class="text-gray-400 hover:text-gold text-2xl"><i class="ri-facebook-circle-fill"></i></a>
-                        <a href="#" class="text-gray-400 hover:text-gold text-2xl"><i class="ri-instagram-line"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-gold"><i class="ri-twitter-x-line text-xl"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-gold"><i class="ri-facebook-circle-fill text-xl"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-gold"><i class="ri-instagram-line text-xl"></i></a>
                     </div>
                 </div>
             </div>
-            <div class="mt-12 pt-8 border-t border-gray-800 text-center text-gray-600 text-sm">
-                &copy; 2024 C. Montgomery Burns. All Rights Reserved. Smithers is not liable for any damages.
+            <div class="border-t border-white/5 pt-8 text-center text-gray-600 text-xs uppercase tracking-widest">
+                &copy; 2024 C. Montgomery Burns. All Rights Reserved.
             </div>
         </div>
     </footer>
 
-    <!-- Donation Modal -->
-    <div id="donateModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal('donateModal')">&times;</span>
-            <h2 class="text-3xl font-bold text-center mb-2 text-green">Fund The Campaign</h2>
-            <p class="text-center text-gray-600 mb-6">Help us buy more hounds.</p>
-            
-            <div class="grid grid-cols-3 gap-2 mb-6">
-                <div class="donation-tier" onclick="selectTier(this, 50)">$50</div>
-                <div class="donation-tier selected" onclick="selectTier(this, 100)">$100</div>
-                <div class="donation-tier" onclick="selectTier(this, 500)">$500</div>
-            </div>
-
-            <form onsubmit="event.preventDefault(); alert('Thank you for your contribution! Your money is safe with me.'); closeModal('donateModal');">
-                <input type="number" id="customAmount" placeholder="Other Amount ($)" class="mb-4">
-                <input type="text" placeholder="Card Number" required>
-                <div class="grid grid-cols-2 gap-4">
-                    <input type="text" placeholder="MM/YY" required>
-                    <input type="text" placeholder="CVC" required>
-                </div>
-                <button type="submit" class="w-full bg-green text-white font-bold py-3 mt-6 hover:bg-yellow-600 transition">DONATE NOW</button>
-            </form>
-        </div>
-    </div>
-
-    <!-- Register Modal (Alternative View) -->
-    <div id="registerModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal('registerModal')">&times;</span>
-            <h2 class="text-3xl font-bold text-center mb-6 text-green">Join The Movement</h2>
-            <form onsubmit="event.preventDefault(); alert('Welcome to the future!'); closeModal('registerModal');">
-                <label class="block text-gray-700 text-sm font-bold mb-2">Full Name</label>
-                <input type="text" required>
-                
-                <label class="block text-gray-700 text-sm font-bold mb-2">Email</label>
-                <input type="email" required>
-                
-                <label class="block text-gray-700 text-sm font-bold mb-2">State</label>
-                <select>
-                    <option>Select State</option>
-                    <option>Springfield</option>
-                    <option>Shelbyville</option>
-                    <option>Ogdenville</option>
-                    <option>Capital City</option>
-                </select>
-
-                <button type="submit" class="w-full bg-gold text-black font-bold py-3 mt-6 hover:bg-yellow-500 transition">REGISTER</button>
-            </form>
-        </div>
-    </div>
-
     <script>
-        // Modal Logic
-        function openModal(modalId) {
-            document.getElementById(modalId).style.display = "block";
-            document.body.style.overflow = "hidden"; // Prevent scrolling
+        // Navigation Logic
+        function navigateTo(pageId) {
+            // Hide all sections
+            document.querySelectorAll('.page-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Show target section
+            document.getElementById(pageId).classList.add('active');
+            
+            // Update Nav Links
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
+            });
+            document.getElementById('link-' + pageId).classList.add('active');
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
         }
 
-        function closeModal(modalId) {
-            document.getElementById(modalId).style.display = "none";
-            document.body.style.overflow = "auto"; // Restore scrolling
+        // Mobile Menu Toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
         }
 
-        // Close modal if clicking outside content
-        window.onclick = function(event) {
-            if (event.target.classList.contains('modal')) {
-                event.target.style.display = "none";
-                document.body.style.overflow = "auto";
+        // Navbar Scroll Effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+                navbar.classList.remove('py-6');
+                navbar.classList.add('py-4');
+            } else {
+                navbar.classList.remove('scrolled');
+                navbar.classList.add('py-6');
+                navbar.classList.remove('py-4');
             }
-        }
-
-        // Donation Tier Selection Logic
-        function selectTier(element, amount) {
-            // Remove selected class from all tiers
-            document.querySelectorAll('.donation-tier').forEach(el => {
-                el.classList.remove('selected');
-                el.style.backgroundColor = '';
-                el.style.color = '';
-            });
-            
-            // Add selected class to clicked tier
-            element.classList.add('selected');
-            
-            // Update custom amount input
-            document.getElementById('customAmount').value = amount;
-        }
-
-        // Smooth Scroll for Anchor Links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
         });
+
+        // Donation Selection
+        function selectAmount(amount) {
+            document.getElementById('donationAmount').value = amount;
+            // Visual feedback
+            document.querySelectorAll('.donation-btn').forEach(btn => {
+                btn.classList.remove('bg-gold/20', 'border-gold');
+                btn.classList.add('border-white/10');
+            });
+            event.target.classList.remove('border-white/10');
+            event.target.classList.add('bg-gold/20', 'border-gold');
+        }
+
+        // Initialize
+        navigateTo('home');
     </script>
 </body>
 </html>
